@@ -37,7 +37,7 @@ const Home = memo((props) => {
 
 
   return (
-  <div className='grid grid-cols-[1.6fr_1fr] mx-auto w-full content-center max-w-[1200px]'>
+  <div className='grid grid-cols-[1.6fr_1fr] mx-auto w-full content-center max-w-[1200px] mt-8'>
     <PostList postsInfo={postsInfo}/> 
     <RentalFilterList />
     <Pagination />

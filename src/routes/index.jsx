@@ -7,6 +7,7 @@ import LoginPage from '../pages/login/Login';
 import RegisterPage from '../pages/register/Register';
 import EnterEmailPage from '../pages/enter-email/EnterEmail';
 import SendPasswordPage from '../pages/send-password/SendPassword';
+import SavePost from '../pages/save-post/SavePost';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
   {
     path: '/home',
     element: <HomePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/save-post',
+    element: <SavePost />,
     errorElement: <ErrorPage />,
   },
   // Admin routes will be updated soon
