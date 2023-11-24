@@ -34,6 +34,11 @@ const router = createBrowserRouter([
     element: <SendPasswordPage />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: '/home',
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+  },
   // Admin routes will be updated soon
 ]);
 

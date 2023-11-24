@@ -5,7 +5,6 @@ export default {
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
     },
-    extend: {},
   },
   plugins: [],
 };
