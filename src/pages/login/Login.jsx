@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 import facebookIcon from '../../assets/images/login/facebook.png';
 import googleIcon from '../../assets/images/login/google.png';
 import sideImage from '../../assets/images/login/image.png';
+import TextInput from '../../components/input/TextInput';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 const Login = memo((props) => {
+   const user = {
+     minUserNameLen: 6,
+     minPasswordLen: 8,
+   };
   const navigate = useNavigate();
   const { mutate, isPending, isError, error } = useMutation({
     // mutationFn: loginAPI()
@@ -46,7 +51,21 @@ const Login = memo((props) => {
           </p> */}
             <form onSubmit={handleSubmit((data) => submitHandler(data))}>
               <div className="my-6">
-                <input
+                <TextInput
+                  type="text"
+                  placeholder="Nhập tài khoản"
+                  label="username"
+                  register={register}
+                  errors={errors}
+                  validatedObject={{
+                    required: `Vui lòng nhập tên tài khoản`,
+                    minLength: {
+                      value: user.minUserNameLen,
+                      message: `Tên tài khoản phải có ít nhất ${user.minUserNameLen} ký tự`,
+                    },
+                  }}
+                />
+                {/* <input
                   type="text"
                   className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
                   placeholder="Nhập tên tài khoản"
@@ -57,13 +76,27 @@ const Login = memo((props) => {
                       message: `Mật khẩu phải có ít nhất 6 ký tự`,
                     },
                   })}
-                />
-                <p className="text-red-600 text-sm">
+                /> */}
+                {/* <p className="text-red-600 text-sm">
                   {errors.username?.message}
-                </p>
+                </p> */}
               </div>
               <div className="my-6">
-                <input
+                <TextInput
+                  type="password"
+                  placeholder="Nhập lại mật khẩu"
+                  label="confirmedPassword"
+                  register={register}
+                  errors={errors}
+                  validatedObject={{
+                    required: `Vui lòng nhập lại mật khẩu`,
+                    minLength: {
+                      message: `Mật khẩu phải có ít nhất ${user.minPasswordLen} kí tự`,
+                      value: user.minPasswordLen,
+                    },
+                  }}
+                />
+                {/* <input
                   type="password"
                   className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
                   placeholder="Nhập mật khẩu"
@@ -74,16 +107,17 @@ const Login = memo((props) => {
                       message: `Mật khẩu phải có ít nhất 8 ký tự`,
                     },
                   })}
-                />
+                /> */}
                 <p className="text-red-600 text-sm">
                   {errors.password?.message}
                 </p>
               </div>
               {/* <!-- Middle Content --> */}
               <div className="flex flex-col items-center justify-between mt-6 space-y-6  md:flex-row md:space-y-0 md:space-x-6">
-                <button 
-                type="submit"
-                className="w-full md:w-auto flex justify-center items-center p-4 space-x-2 font-sans font-bold text-white rounded-md px-9 bg-cyan-600 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150">
+                <button
+                  type="submit"
+                  className="w-full md:w-auto flex justify-center items-center p-4 space-x-2 font-sans font-bold text-white rounded-md px-9 bg-cyan-600 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                >
                   <span>Đăng nhập</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -102,8 +136,9 @@ const Login = memo((props) => {
                   </svg>
                 </button>
                 <button
-                type="button"
-                className="w-full md:w-auto flex justify-center items-center p-4 space-x-2 font-sans font-bold text-cyan-600 outline outline-cyan-600 bg-white rounded-md px-9 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150">
+                  type="button"
+                  className="w-full md:w-auto flex justify-center items-center p-4 space-x-2 font-sans font-bold text-cyan-600 outline outline-cyan-600 bg-white rounded-md px-9 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                >
                   <Link to="/register">Đăng ký</Link>
                 </button>
               </div>
