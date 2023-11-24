@@ -1,7 +1,25 @@
 import { memo } from 'react';
 import sideImage from '../../assets/images/register/image.png';
+import Input from '../../components/input/TextInput';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 const Login = memo(() => {
+  const user = {
+    minUserNameLen: 6,
+    minPasswordLen: 8,
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      username: ``,
+      email: ``,
+      password: ``,
+      confirmedPassword: ``,
+    },
+  });
   return (
     <div className="h-screen">
       {/* <!-- Global Container --> */}
@@ -16,59 +34,118 @@ const Login = memo(() => {
             Log in to your account to upload or download pictures, videos or
             music.
           </p> */}
-            <div className="my-6">
-              <input
-                type="text"
-                className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
-                placeholder="Nhập tài khoản"
-              />
-            </div>
-            <div className="my-6">
-              <input
-                type="password"
-                className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
-                placeholder="Nhập địa chỉ email"
-              />
-            </div>
-            <div className="my-6">
-              <input
-                type="password"
-                className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
-                placeholder="Nhập mật khẩu"
-              />
-            </div>
-            <div className="my-6">
-              <input
-                type="password"
-                className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
-                placeholder="Nhập lại mật khẩu"
-              />
-            </div>
-            {/* <!-- Middle Content --> */}
-            <div className="flex flex-col items-center justify-between mt-6 space-y-6  md:flex-row md:space-y-0 md:space-x-6">
-              <div className="font-regular text-cyan-600 hover:cursor-pointer">
-                <Link to="/login">Đã có tài khoản?</Link>
+            <form onSubmit={handleSubmit((data) => console.log(data))}>
+              <div className="my-6">
+                <Input
+                  type="text"
+                  placeholder="Nhập tài khoản"
+                  label="username"
+                  register={register}
+                  errors={errors}
+                  validatedObject={{
+                    required: `Vui lòng nhập tên tài khoản`,
+                    minLength: {
+                      value: user.minUserNameLen,
+                      message: `Tên tài khoản phải có ít nhất ${user.minUserNameLen} ký tự`,
+                    },
+                  }}
+                />
               </div>
+              {/* <div className="my-6">
+                <input
+                  type="text"
+                  className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
+                  placeholder="Nhập tài khoản"
+                />
+              </div> */}
+              <div className="my-6">
+                <Input
+                  type="email"
+                  placeholder="Nhập địa chỉ email"
+                  label="email"
+                  register={register}
+                  errors={errors}
+                  validatedObject={{
+                    required: `Vui lòng nhập địa chỉ email`,
+                  }}
+                />
+                {/* <input
+                  type="password"
+                  className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
+                  placeholder="Nhập địa chỉ email"
+                /> */}
+              </div>
+              <div className="my-6">
+                <Input
+                  type="password"
+                  placeholder="Nhập mật khẩu"
+                  label="password"
+                  register={register}
+                  errors={errors}
+                  validatedObject={{
+                    required: `Vui lòng nhập mật khẩu`,
+                    minLength: {
+                      message: `Mật khẩu phải có ít nhất ${user.minPasswordLen} kí tự`,
+                      value: user.minPasswordLen,
+                    },
+                  }}
+                />
+                {/* <input
+                  type="password"
+                  className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
+                  placeholder="Nhập mật khẩu"
+                /> */}
+              </div>
+              <div className="my-6">
+                <Input
+                  type="password"
+                  placeholder="Nhập lại mật khẩu"
+                  label="confirmedPassword"
+                  register={register}
+                  errors={errors}
+                  validatedObject={{
+                    required: `Vui lòng nhập lại mật khẩu`,
+                    minLength: {
+                      message: `Mật khẩu phải có ít nhất ${user.minPasswordLen} kí tự`,
+                      value: user.minPasswordLen,
+                    },
+                  }}
+                />
+                {/* <input
+                  type="password"
+                  className="w-full py-4 px-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light hover:outline hover:outline-black hover:outline-1"
+                  placeholder="Nhập lại mật khẩu"
+                /> */}
+              </div>
+              {/* <!-- Middle Content --> */}
+              <div className="flex flex-col items-center justify-between mt-6 space-y-6  md:flex-row md:space-y-0 md:space-x-6">
+                <div className="font-regular text-cyan-600 hover:cursor-pointer">
+                  <Link to="/login">Đã có tài khoản?</Link>
+                </div>
 
-              <button className="w-full md:w-auto flex justify-center items-center p-4 space-x-2 font-sans font-bold text-white rounded-md px-9 bg-cyan-600 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150">
-                <span>Đăng ký</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-7"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="#ffffff"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <button
+                  type="submit"
+                  className="w-full md:w-auto flex justify-center items-center p-4 space-x-2 font-sans font-bold text-white rounded-md px-9 bg-cyan-600 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <line x1="13" y1="18" x2="19" y2="12" />
-                  <line x1="13" y1="6" x2="19" y2="12" />
-                </svg>
-              </button>
-            </div>
+                  <span>Đăng ký</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-7"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="#ffffff"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <line x1="13" y1="18" x2="19" y2="12" />
+                    <line x1="13" y1="6" x2="19" y2="12" />
+                  </svg>
+                </button>
+              </div>
+            </form>
             {/* <!-- Border --> */}
             {/* <div className="mt-12 border-b border-b-gray-300"></div> */}
             {/* <!-- Bottom Content --> */}
