@@ -9,6 +9,9 @@ import EnterEmailPage from '../pages/enter-email/EnterEmail';
 import SendPasswordPage from '../pages/send-password/SendPassword';
 import SavePost from '../pages/save-post/SavePost';
 import PostDetail from '../pages/post-detail/PostDetail';
+import HistoryMoney from '../pages/history-money/history-money';
+import Recharge from '../pages/history-money/recharge';
+import UserList from '../pages/user-detail/user-list';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -51,7 +54,23 @@ const router = createBrowserRouter([
     element: <PostDetail />,
     errorElement: <ErrorPage />,
   },
-
+  {
+    path: '/history-money',
+    element: <UserLayout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <HistoryMoney /> }],
+  },
+  {
+    path: '/history-money/history',
+    element: <UserLayout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <Recharge /> }],
+  },
+  {
+    path: '/user-list',
+    element: <UserList />,
+    errorElement: <ErrorPage />,
+  },
   // Admin routes will be updated soon
 ]);
 
