@@ -13,6 +13,7 @@ import HistoryMoney from '../pages/history-money/history-money';
 import Recharge from '../pages/history-money/recharge';
 import AddUser from '../pages/user-detail/add-user';
 import ChangePassWord from '../pages/user-detail/change-password';
+import UserList from '../pages/user-detail/user-list';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -68,13 +69,18 @@ const router = createBrowserRouter([
     children: [{ index: true, element: <Recharge /> }],
   },
   {
-    path: 'admin/user',
+    path: 'admin/user/add-user',
     element: <AddUser />,
     errorElement: <ErrorPage />,
   },
   {
     path: 'admin/user/changepassword',
     element: <ChangePassWord />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'admin/user',
+    element: <UserList />,
     errorElement: <ErrorPage />,
   },
   // Admin routes will be updated soon
