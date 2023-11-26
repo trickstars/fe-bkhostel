@@ -11,7 +11,8 @@ import SavePost from '../pages/save-post/SavePost';
 import PostDetail from '../pages/post-detail/PostDetail';
 import HistoryMoney from '../pages/history-money/history-money';
 import Recharge from '../pages/history-money/recharge';
-import UserList from '../pages/user-detail/user-list';
+import AddUser from '../pages/user-detail/add-user';
+import ChangePassWord from '../pages/user-detail/change-password';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -67,8 +68,13 @@ const router = createBrowserRouter([
     children: [{ index: true, element: <Recharge /> }],
   },
   {
-    path: '/user-list',
-    element: <UserList />,
+    path: 'admin/user',
+    element: <AddUser />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'admin/user/changepassword',
+    element: <ChangePassWord />,
     errorElement: <ErrorPage />,
   },
   // Admin routes will be updated soon

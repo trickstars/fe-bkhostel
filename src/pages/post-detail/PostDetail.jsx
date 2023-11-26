@@ -3,12 +3,12 @@ import OwnerDetail from './components/OwnerDetail'
 
 const PostDetail = () => {
     const rentalDetail = {
-        imageUrl: "https://timescityminhkhai.com/wp-content/uploads/sites/4/2020/10/phong-tro-cho-thue.jpg", 
-        title: "Phòng trọ giá tốt tại Q.5", 
-        postDate : "Hôm nay", 
-        price: 1.5, 
-        area: 22, 
-        addressDetail: "120 Nguyễn Lương Bằng, Phường Phú Mỹ, Quận 7, Hồ Chí Minh", 
+        imageUrl: "https://timescityminhkhai.com/wp-content/uploads/sites/4/2020/10/phong-tro-cho-thue.jpg",
+        title: "Phòng trọ giá tốt tại Q.5",
+        postDate: "Hôm nay",
+        price: 1.5,
+        area: 22,
+        addressDetail: "120 Nguyễn Lương Bằng, Phường Phú Mỹ, Quận 7, Hồ Chí Minh",
         descriptionDetail: `Lorem ipsum dolor sit amet consectetur. Aliquam vitae morbi justo phasellus mauris. In sed et at tincidunt vel quisque. 
                     Mattis praesent viverra eget id nec sodales. Leo vel pretium urna cursus maecenas dui venenatis non. Sed bibendum adipiscing 
                     ipsum ornare justo nulla. Amet adipiscing odio ac pulvinar eget tempus morbi feugiat. Volutpat ultrices vitae sit arcu imperdiet 
@@ -20,7 +20,7 @@ const PostDetail = () => {
         },
         owner: {
             fullName: "Lê Quân Nuôi",
-            phoneNumber: "0815777735" 
+            phoneNumber: "0815777735"
         }
     }
     return (
@@ -28,7 +28,7 @@ const PostDetail = () => {
             <RentalDetail {...rentalDetail} />
             <OwnerDetail owner={rentalDetail.owner} />
         </div>
-  )
+    )
 }
 
-export default PostDetail
+export default PostDetail;

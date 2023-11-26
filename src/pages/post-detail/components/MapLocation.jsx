@@ -15,4 +15,4 @@ const MapLocation = ({location, zoomLevel = 3}) => {
   )
 }
 
-export default MapLocation
+export default MapLocation;
