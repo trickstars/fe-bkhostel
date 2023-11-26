@@ -8,6 +8,7 @@ import RegisterPage from '../pages/register/Register';
 import EnterEmailPage from '../pages/enter-email/EnterEmail';
 import SendPasswordPage from '../pages/send-password/SendPassword';
 import SavePost from '../pages/save-post/SavePost';
+import PostDetail from '../pages/post-detail/PostDetail';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -45,6 +46,12 @@ const router = createBrowserRouter([
     element: <SavePost />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: '/post-detail',
+    element: <PostDetail />,
+    errorElement: <ErrorPage />,
+  },
+
   // Admin routes will be updated soon
 ]);
 
