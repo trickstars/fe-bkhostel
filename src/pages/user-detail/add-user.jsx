@@ -9,44 +9,12 @@ import { RiArrowDropRightFill } from "react-icons/ri";
 import { RiArrowDownSFill } from "react-icons/ri";
 import { LiaFlagUsaSolid } from "react-icons/lia";
 import 'flowbite';
-
-const style = {
-    color: '#25BEB9', fontSize: '1.5rem'
-}
-const style_list = "flex flex-row items-center pl-3 ml-2 hover:bg-[#B6D6F2] rounded-3xl";
+import LeftSideBar from "./components/left-side-bar";
 
 const AddUser = () => {
-    const [show, setShow] = useState(false);
-    const handleClick = () => {
-        if (show == false) return setShow(true);
-        else return setShow(false);
-
-    }
     return (
         <div className="grid grid-cols-10 gap-3">
-            <div className=" h-screen col-start-1 col-span-2 pl-3 text-lg bg-white">
-                <div className="my-8 ml-4 mb-3 hover:cursor-pointer text-4xl font-semibold text-[#0891B2]">BKHOSTEL</div>
-                <div className={style_list}>
-                    <PiTelevision style={style} />
-                    <div className="my-8 hover:cursor-pointer ml-2 ">Statistics</div>
-                </div>
-                <div className={style_list}>
-                    <RxAvatar style={style} />
-                    <div className="my-8 hover:cursor-pointer ml-2">Users</div>
-
-                    {show === true ? <RiArrowDownSFill onClick={handleClick} style={{ marginLeft: '105px', fontSize: '20px' }} />
-                        : <RiArrowDropRightFill onClick={handleClick} style={{ marginLeft: '100px', fontSize: '30px' }} />}
-                </div>
-                {show == true ? <UserDetail /> : <></>}
-                <div className={style_list}>
-                    <CiCreditCard2 style={style} />
-                    <div className="my-8 hover:cursor-pointer ml-2">Post</div>
-                </div>
-                <div className={style_list}>
-                    <IoCartOutline style={style} />
-                    <div className="my-8 hover:cursor-pointer ml-2">Pricing</div>
-                </div>
-            </div>
+            <LeftSideBar />
             <div className="h-screen col-start-3 col-span-8 pl-3 text-lg bg-[#b6d6f2]">
                 <div className="flex align-center items-center h-24">
                     <div class="relative w-80 ml-14">
@@ -97,7 +65,7 @@ const AddUser = () => {
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                             </button>
-                            <div id="dropdown" class="bg-gray-200 rounded-lg shadow w-64 dark:bg-gray-700">
+                            <div id="dropdown" class="hidden bg-gray-200 rounded-lg shadow w-64 dark:bg-gray-700">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                                     <li>
                                         <a href="#" class="block px-4 py-2 hover:bg-white dark:hover:bg-gray-600 dark:hover:text-white">Admin</a>

@@ -13,7 +13,7 @@ const Recharge = () => {
                         </div>
                     </div>
                 </div>
-                <div className="my-8 hover:cursor-pointer ">Đăng tin cho thuê</div>
+                <div className="my-8 hover:cursor-pointer">Đăng tin cho thuê</div>
                 <div className="my-8 hover:cursor-pointer">Lịch sử cho thuê</div>
                 <div className="my-8 hover:cursor-pointer">Thông tin cá nhân</div>
                 <div className="my-8 hover:cursor-pointer">Nạp tiền</div>
