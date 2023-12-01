@@ -2,35 +2,57 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line react/display-name
 import { memo, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import Carousel from "../../components/admin/Carousel";
 import Gallery from "../../components/admin/Gallery";
 
-
 const DetailPost = memo((props) => {
-  let {state} = useLocation();
+  let { state } = useLocation();
+  const navigate = useNavigate();
   let post = state; // Sau này sẽ sử dụng biến post
   const imageUrl =
     "https://images.unsplash.com/photo-1501183638710-841dd1904471?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZXxlbnwwfHwwfHx8MA%3D%3D";
+
+  const handleVerified = () => {navigate('../posts',{state:{verifiedId:post.id}})};
+  const handleDelete = () => {navigate('../posts',{state:{deletedId:post.id}})};
   return (
     <div className="w-full bg-blue-200 p-0 m-0 box-border">
       <div className="py-8 ml-8">
-        <h2 className="font-bold text-3xl">Posts / Detail</h2>
+        <h2 className="font-bold text-3xl">
+          <Link to={"../posts"} className="underline hover:text-blue-600">
+            Posts
+          </Link>{" "}
+          / Detail
+        </h2>
         <div className="pr-8 mt-4">
+          <div className="text-right text-md md:text-2xl mb-2">
+            <button
+              className=" py-2 px-8 bg-[#25BEB9] text-white mr-8 rounded-2xl hover:scale-105 transition"
+              onClick={handleVerified}
+            >
+              Verified
+            </button>
+            <button
+              className="py-2 px-8 bg-red-600 text-white mr-4 rounded-2xl hover:scale-105 transition"
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
+          </div>
           <div>
             <div className="md:grid md:grid-cols-12 md:gap-8 mb-4 md:h-[480px]">
               <div className="md:col-span-5 lg:col-span-4 h-full">
                 <div className="md:h-full">
                   <div className={`w-full h-80 md:h-[60%]`}>
-                    <Carousel/>
+                    <Carousel />
                   </div>
                   <div className="hidden md:block md:h-[25%] md:mt-2">
-                      <Gallery/>
+                    <Gallery />
                   </div>
                 </div>
               </div>
               <div className="md:col-span-7 lg:col-span-8">
-                <div>
+                <div className="mt-2 md:mt-0">
                   <div className="text-red-600 text-2xl mb-4">
                     <p>
                       Phòng Master Tolet riêng Căn hộ Chung cư Era Town Đức
