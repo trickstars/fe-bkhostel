@@ -2,29 +2,34 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line react/display-name
 import { memo, useState } from "react";
+import { useLocation } from "react-router-dom";
+import Carousel from "../../components/admin/Carousel";
+import Gallery from "../../components/admin/Gallery";
+
 
 const DetailPost = memo((props) => {
+  let {state} = useLocation();
+  let post = state; // Sau này sẽ sử dụng biến post
   const imageUrl =
     "https://images.unsplash.com/photo-1501183638710-841dd1904471?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZXxlbnwwfHwwfHx8MA%3D%3D";
   return (
-    <div className="w-full bg-blue-200">
-      <div className="pt-8 ml-8">
+    <div className="w-full bg-blue-200 p-0 m-0 box-border">
+      <div className="py-8 ml-8">
         <h2 className="font-bold text-3xl">Posts / Detail</h2>
         <div className="pr-8 mt-4">
           <div>
-            <div className="grid grid-cols-12 gap-8 mb-4">
-              <div className="col-span-4">
-                <div>
-                  <div className={`bg-home w-full h-[300px]`}></div>
-                  <div className="grid grid-cols-4 h-20 gap-2 mt-4">
-                    <div className={`bg-home h-full rounded-md`}></div>
-                    <div className={`bg-home h-full rounded-md`}></div>
-                    <div className={`bg-home h-full rounded-md`}></div>
-                    <div className={`bg-home h-full rounded-md`}></div>
+            <div className="grid grid-cols-12 gap-8 mb-4 h-[480px]">
+              <div className="col-span-5 lg:col-span-4 h-full">
+                <div className="h-full">
+                  <div className={`w-full h-[60%]`}>
+                    <Carousel/>
+                  </div>
+                  <div className="h-[25%] mt-2">
+                      <Gallery/>
                   </div>
                 </div>
               </div>
-              <div className="col-span-8">
+              <div className="col-span-7 lg:col-span-8 h-full">
                 <div>
                   <div className="text-red-600 text-2xl mb-4">
                     <p>
@@ -38,24 +43,24 @@ const DetailPost = memo((props) => {
                   <p className="text-red-600 font-bold text-3xl mb-4">
                     2.100.000 đ
                   </p>
-                  <div className="bg-white rounded-lg p-8">
-                    <p className="font-bold mb-4">Seller</p>
+                  <div className="bg-white rounded-lg p-4 lg:p-8">
+                    <p className="font-bold mb-4 text-3xl">Seller</p>
                     <div className="grid grid-rows-2 grid-cols-2 mb-4 gap-4">
                       <div>
-                        <p>Full Name</p>
-                        <p>Nguyễn Văn Anh</p>
+                        <p className="font-semibold">Full Name</p>
+                        <p className="text-sm">Nguyễn Văn Anh</p>
                       </div>
                       <div>
-                        <p>Full Name</p>
-                        <p>Nguyễn Văn Anh</p>
+                        <p className="font-semibold">Address</p>
+                        <p className="text-sm">Số 1 Võ Văn Ngân</p>
                       </div>
                       <div>
-                        <p>Full Name</p>
-                        <p>Nguyễn Văn Anh</p>
+                        <p className="font-semibold">Location</p>
+                        <p className="text-sm">Tp. Hồ Chí Minh</p>
                       </div>
                       <div>
-                        <p>Full Name</p>
-                        <p>Nguyễn Văn Anh</p>
+                        <p className="font-semibold">Phone Number</p>
+                        <p className="text-sm">0898354444</p>
                       </div>
                     </div>
                     <div>
@@ -67,7 +72,7 @@ const DetailPost = memo((props) => {
                 </div>
               </div>
             </div>
-            <div className="bg-white p-8 rounded-lg h-[300px]">
+            <div className="bg-white p-8 rounded-lg">
               <p className="font-bold text-2xl text-[#25BEB9]">Description</p>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.

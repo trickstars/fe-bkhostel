@@ -73,7 +73,7 @@ const Posts = memo(() => {
   ]);
   const [seletedFilter, setSelectedFilter] = useState("All");
   const navigate = useNavigate();
-
+  
   const handlePageChange = (newPage) => {
     setPage({
       current: newPage,
@@ -104,10 +104,10 @@ const Posts = memo(() => {
         <h2 className="font-bold text-3xl">Posts</h2>
         <div className="pr-8 mt-4">
           <div className="bg-white w-full rounded-xl py-4 px-4 relative min-h-[600px]">
-            <div className="flex justify-between">
-              <div className="w-1/2 lg:w-1/3 flex justify-between">
+            <div className="flex justify-between flex-col md:flex-row">
+              <div className="w-1/2 lg:w-1/3 flex justify-between flex-col md:flex-row">
                 <button
-                  className={`rounded-lg px-20 ${
+                  className={`rounded-lg px-5 lg:px-20 ${
                     seletedFilter === "All" ? activeFilter : nonactiveFilter
                   }`}
                   onClick={() => {
@@ -117,7 +117,7 @@ const Posts = memo(() => {
                   All
                 </button>
                 <button
-                  className={`rounded-lg px-20 ${
+                  className={`rounded-lg px-5 lg:px-20 ${
                     seletedFilter === "Pending" ? activeFilter : nonactiveFilter
                   } ml-2`}
                   onClick={() => {
@@ -127,7 +127,7 @@ const Posts = memo(() => {
                   Pending
                 </button>
                 <button
-                  className={`rounded-lg px-20 ${
+                  className={`rounded-lg px-5 lg:px-20 ${
                     seletedFilter === "Verified"
                       ? activeFilter
                       : nonactiveFilter
@@ -139,8 +139,8 @@ const Posts = memo(() => {
                   Verified
                 </button>
               </div>
-              <div className="flex flex-row-reverse">
-                <form className="flex items-center">
+              <div className="flex">
+                <form className="flex items-center w-full">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -191,13 +191,13 @@ const Posts = memo(() => {
                               post?.status == "Verified"
                                 ? "bg-[#59d9cc]"
                                 : "bg-[#f5a201]"
-                            } text-white px-5 inline-block rounded-xl`}
+                            } text-white px-1 lg:px-5 inline-block rounded-sm lg:rounded-xl`}
                           >
                             {post.status}
                           </span>
                         </div>
                         <div className="col-span-2 flex justify-center">
-                          <Link to={"/posts/detail"}>
+                          <Link to={"/posts/detail"} state={post}>
                             <BiSolidDetail
                               className="mr-1 md:mr-2 lg:mr-4 w-6 h-6 cursor-pointer hover:scale-105 hover:text-[rgb(57,197,200)]"
                             />
