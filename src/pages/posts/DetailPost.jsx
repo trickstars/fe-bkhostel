@@ -18,18 +18,18 @@ const DetailPost = memo((props) => {
         <h2 className="font-bold text-3xl">Posts / Detail</h2>
         <div className="pr-8 mt-4">
           <div>
-            <div className="grid grid-cols-12 gap-8 mb-4 h-[480px]">
-              <div className="col-span-5 lg:col-span-4 h-full">
-                <div className="h-full">
-                  <div className={`w-full h-[60%]`}>
+            <div className="md:grid md:grid-cols-12 md:gap-8 mb-4 md:h-[480px]">
+              <div className="md:col-span-5 lg:col-span-4 h-full">
+                <div className="md:h-full">
+                  <div className={`w-full h-80 md:h-[60%]`}>
                     <Carousel/>
                   </div>
-                  <div className="h-[25%] mt-2">
+                  <div className="hidden md:block md:h-[25%] md:mt-2">
                       <Gallery/>
                   </div>
                 </div>
               </div>
-              <div className="col-span-7 lg:col-span-8 h-full">
+              <div className="md:col-span-7 lg:col-span-8">
                 <div>
                   <div className="text-red-600 text-2xl mb-4">
                     <p>
@@ -45,7 +45,7 @@ const DetailPost = memo((props) => {
                   </p>
                   <div className="bg-white rounded-lg p-4 lg:p-8">
                     <p className="font-bold mb-4 text-3xl">Seller</p>
-                    <div className="grid grid-rows-2 grid-cols-2 mb-4 gap-4">
+                    <div className="md:grid md:grid-rows-2 md:grid-cols-2 mb-4 md:gap-4">
                       <div>
                         <p className="font-semibold">Full Name</p>
                         <p className="text-sm">Nguyễn Văn Anh</p>
