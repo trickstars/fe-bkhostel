@@ -28,7 +28,19 @@ const router = createBrowserRouter([
     path: '/',
     element: <UserLayout />,
     errorElement: <ErrorPage />,
-    children: [{ index: true, element: <HomePage />}],
+    children: [
+      { index: true, element: <HomePage /> },
+      {
+        path: '/save-post',
+        element: <SavePost />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: '/post-detail',
+        element: <PostDetail />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
   {
     path: '/login',
@@ -51,19 +63,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-
     path: '/home',
     element: <HomePage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: '/save-post',
-    element: <SavePost />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: '/post-detail',
-    element: <PostDetail />,
     errorElement: <ErrorPage />,
   },
 
@@ -92,9 +93,9 @@ const router = createBrowserRouter([
   {
     path: 'admin/user',
     element: <UserList />,
-
-
- '/pricing',
+  },
+  {
+    path: '/pricing',
     element: <PricingPage />,
     errorElement: <ErrorPage />,
   },
