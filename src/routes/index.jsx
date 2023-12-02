@@ -1,25 +1,34 @@
 import { createBrowserRouter } from 'react-router-dom';
 import UserLayout from '../layouts/UserLayout';
-import AdminLayout from '../layouts/AdminLayout';
+// import AdminLayout from '../layouts/AdminLayout';
 import ErrorPage from '../pages/error/Error';
 import HomePage from '../pages/home/Home';
 import LoginPage from '../pages/login/Login';
 import RegisterPage from '../pages/register/Register';
 import EnterEmailPage from '../pages/enter-email/EnterEmail';
 import SendPasswordPage from '../pages/send-password/SendPassword';
+
 import SavePost from '../pages/save-post/SavePost';
 import PostDetail from '../pages/post-detail/PostDetail';
+
 import HistoryMoney from '../pages/history-money/history-money';
 import Recharge from '../pages/history-money/recharge';
 import AddUser from '../pages/user-detail/add-user';
 import ChangePassWord from '../pages/user-detail/change-password';
 import UserList from '../pages/user-detail/user-list';
+
+
+import PricingPage from '../pages/pricing/Pricing';
+import PostsPage from '../pages/posts/Posts';
+import DetailPost from '../pages/posts/DetailPost';
+
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <UserLayout />,
     errorElement: <ErrorPage />,
-    children: [{ index: true, element: <HomePage /> }],
+    children: [{ index: true, element: <HomePage />}],
   },
   {
     path: '/login',
@@ -42,6 +51,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+
     path: '/home',
     element: <HomePage />,
     errorElement: <ErrorPage />,
@@ -56,6 +66,7 @@ const router = createBrowserRouter([
     element: <PostDetail />,
     errorElement: <ErrorPage />,
   },
+
   {
     path: '/history-money',
     element: <UserLayout />,
@@ -81,6 +92,20 @@ const router = createBrowserRouter([
   {
     path: 'admin/user',
     element: <UserList />,
+
+
+ '/pricing',
+    element: <PricingPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/posts',
+    element: <PostsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/posts/detail',
+    element: <DetailPost />,
     errorElement: <ErrorPage />,
   },
   // Admin routes will be updated soon
