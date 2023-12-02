@@ -7,9 +7,14 @@ import LoginPage from '../pages/login/Login';
 import RegisterPage from '../pages/register/Register';
 import EnterEmailPage from '../pages/enter-email/EnterEmail';
 import SendPasswordPage from '../pages/send-password/SendPassword';
+
+import SavePost from '../pages/save-post/SavePost';
+import PostDetail from '../pages/post-detail/PostDetail';
+
 import PricingPage from '../pages/pricing/Pricing';
 import PostsPage from '../pages/posts/Posts';
 import DetailPost from '../pages/posts/DetailPost';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -38,7 +43,24 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/pricing',
+
+    path: '/home',
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/save-post',
+    element: <SavePost />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/post-detail',
+    element: <PostDetail />,
+    errorElement: <ErrorPage />,
+  },
+
+=======
+ '/pricing',
     element: <PricingPage />,
     errorElement: <ErrorPage />,
   },
