@@ -4,8 +4,6 @@ import { FaPhone } from "react-icons/fa6";
 import zaloSrc from "../../../assets/images/footer/zalo.png"
 import { IoMdHeartEmpty } from "react-icons/io";
 
-
-
 const OwnerDetail = ({owner}) => {
     return (
         <div className='flex flex-col items-center gap-4 px-3 py-4 border border-gray-300 rounded-md h-fit bg-[#FEBB02] ml-10 '>

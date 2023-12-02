@@ -11,9 +11,17 @@ import SendPasswordPage from '../pages/send-password/SendPassword';
 import SavePost from '../pages/save-post/SavePost';
 import PostDetail from '../pages/post-detail/PostDetail';
 
+import HistoryMoney from '../pages/history-money/history-money';
+import Recharge from '../pages/history-money/recharge';
+import AddUser from '../pages/user-detail/add-user';
+import ChangePassWord from '../pages/user-detail/change-password';
+import UserList from '../pages/user-detail/user-list';
+
+
 import PricingPage from '../pages/pricing/Pricing';
 import PostsPage from '../pages/posts/Posts';
 import DetailPost from '../pages/posts/DetailPost';
+
 
 const router = createBrowserRouter([
   {
@@ -59,7 +67,33 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
 
-=======
+  {
+    path: '/history-money',
+    element: <UserLayout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <HistoryMoney /> }],
+  },
+  {
+    path: '/history-money/history',
+    element: <UserLayout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <Recharge /> }],
+  },
+  {
+    path: 'admin/user/add-user',
+    element: <AddUser />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'admin/user/changepassword',
+    element: <ChangePassWord />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'admin/user',
+    element: <UserList />,
+
+
  '/pricing',
     element: <PricingPage />,
     errorElement: <ErrorPage />,
