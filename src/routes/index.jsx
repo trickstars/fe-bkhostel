@@ -47,9 +47,15 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/post-detail',
-    element: <PostDetail />,
+    path: '/',
+    element: <UserLayout />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/post-detail",
+        element: <PostDetail />,
+      },
+    ],
   },
 
   // Admin routes will be updated soon
