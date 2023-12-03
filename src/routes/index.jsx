@@ -11,6 +11,7 @@ import PricingPage from '../pages/pricing/Pricing';
 import PostsPage from '../pages/posts/Posts';
 import DetailPost from '../pages/posts/DetailPost';
 import PostDetail from '../pages/post-detail/PostDetail'
+import SavePost from '../pages/save-post/SavePost';
 import { PostFilterContextProvider } from '../contexts/PostFilterContext';
 
 const router = createBrowserRouter([
@@ -60,6 +61,12 @@ const router = createBrowserRouter([
     element: <UserLayout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <PostDetail />}],
+  },
+  {
+    path: '/save-post',
+    element: <UserLayout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <SavePost />}],
   },
   
   // Admin routes will be updated soon
