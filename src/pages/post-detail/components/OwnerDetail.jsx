@@ -11,7 +11,7 @@ const OwnerDetail = ({owner}) => {
         <div className='flex flex-col items-center gap-4 px-3 py-4 border border-gray-300 rounded-md h-fit bg-[#FEBB02] ml-10 '>
             <div className='flex flex-col items-center gap-1 mb-2'>
                 <FaRegUserCircle className='w-[48px] h-[45px] text-white' />
-                <p className='text-base font-semibold'>{owner.fullName}</p>
+                <p className='text-base font-semibold'>{owner.full_name}</p>
             </div>
 
             <button className='flex items-center gap-2 justify-center rounded-md px-2 py-2 bg-[#13BB7B] w-full max-w-[250px]'>

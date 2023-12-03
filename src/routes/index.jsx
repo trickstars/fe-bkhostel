@@ -55,6 +55,13 @@ const router = createBrowserRouter([
     element: <DetailPost />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: '/post/detail/:id',
+    element: <UserLayout />,
+    errorElement: <ErrorPage />,
+    children: [{ index: true, element: <PostDetail />}],
+  },
+  
   // Admin routes will be updated soon
 ]);
 
