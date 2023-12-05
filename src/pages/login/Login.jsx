@@ -15,15 +15,21 @@ const Login = memo((props) => {
     minUserNameLen: 6,
     minPasswordLen: 6,
   };
-  
+
   const { mutate, isPending, isSuccess, isError, error, status } = useMutation({
     mutationFn: async (userData) => {
       const response = await loginUser(userData);
       console.log(response);
-      localStorage.setItem('token', response.token)
+      localStorage.setItem('token', response.token);
+      console.log(`role = ${response.result['user-info'].role}`);
+      localStorage.setItem('role', response.result['user-info'].role);
     },
     onSuccess: () => {
       // Go back to home page
+      const role = localStorage.getItem('role');
+      if (role === 'ADMIN') {
+         return navigate('/admin/statistics');
+      }
       navigate('/');
     },
   });
