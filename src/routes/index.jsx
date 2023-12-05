@@ -23,6 +23,12 @@ import PostsPage from '../pages/posts/Posts';
 import DetailPost from '../pages/posts/DetailPost';
 import Statistics from '../pages/statistics/Statistics';
 
+import PostHistory from '../pages/post-history/PostHistory';
+import Profile from '../pages/profile/Profile';
+import PostNew from '../pages/post-new/PostNew';
+import ServicesTable from '../pages/services-table/ServicesTable';
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -114,6 +120,25 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+
+    path: '/post-history',
+    element: <PostHistory />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/profile',
+    element: <Profile />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/post-new',
+    element: <PostNew />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/services',
+    element: <ServicesTable />,
+
     path: 'admin/statistics',
     element: <Statistics />,
     errorElement: <ErrorPage />,
