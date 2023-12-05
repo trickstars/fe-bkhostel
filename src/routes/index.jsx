@@ -15,12 +15,18 @@ import HistoryMoney from '../pages/history-money/history-money';
 import Recharge from '../pages/history-money/recharge';
 import AddUser from '../pages/user-detail/add-user';
 import ChangePassWord from '../pages/user-detail/change-password';
-import UserList from '../pages/user-detail/user-list';
-
+import UserDetail from '../pages/user-detail/user-list';
+import UserList from '../pages/manage-user/UserList';
 
 import PricingPage from '../pages/pricing/Pricing';
 import PostsPage from '../pages/posts/Posts';
 import DetailPost from '../pages/posts/DetailPost';
+import Statistics from '../pages/statistics/Statistics';
+
+import PostHistory from '../pages/post-history/PostHistory';
+import Profile from '../pages/profile/Profile';
+import PostNew from '../pages/post-new/PostNew';
+import ServicesTable from '../pages/services-table/ServicesTable';
 
 
 const router = createBrowserRouter([
@@ -81,6 +87,10 @@ const router = createBrowserRouter([
     children: [{ index: true, element: <Recharge /> }],
   },
   {
+    path: 'admin/userlist',
+    element: <UserList />,
+  },
+  {
     path: 'admin/user/add-user',
     element: <AddUser />,
     errorElement: <ErrorPage />,
@@ -92,21 +102,45 @@ const router = createBrowserRouter([
   },
   {
     path: 'admin/user',
-    element: <UserList />,
+    element: <UserDetail />,
   },
   {
-    path: '/pricing',
+    path: 'admin/pricing',
     element: <PricingPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: '/posts',
+    path: 'admin/posts',
     element: <PostsPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: '/posts/detail',
+    path: 'admin/posts/detail',
     element: <DetailPost />,
+    errorElement: <ErrorPage />,
+  },
+  {
+
+    path: '/post-history',
+    element: <PostHistory />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/profile',
+    element: <Profile />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/post-new',
+    element: <PostNew />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/services',
+    element: <ServicesTable />,
+
+    path: 'admin/statistics',
+    element: <Statistics />,
     errorElement: <ErrorPage />,
   },
   // Admin routes will be updated soon
