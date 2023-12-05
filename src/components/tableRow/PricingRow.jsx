@@ -4,7 +4,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import { BiSolidDetail } from "react-icons/bi";
 
 // eslint-disable-next-line react/display-name, react/prop-types
-const PricingRow = memo(({ handleDelete,rowItem }) => {
+const PricingRow = memo(({ handleDelete,rowItem,handleModify}) => {
   console.log(rowItem);
   return (
     <div className="grid grid-cols-16 py-2">
@@ -21,7 +21,7 @@ const PricingRow = memo(({ handleDelete,rowItem }) => {
         </span>
       </div>
       <div className="col-span-3 flex justify-center">
-        <BiSolidDetail className="mr-1 md:mr-2 lg:mr-4 w-6 h-6 cursor-pointer hover:scale-105 hover:text-[rgb(57,197,200)]" />
+        <BiSolidDetail className="mr-1 md:mr-2 lg:mr-4 w-6 h-6 cursor-pointer hover:scale-105 hover:text-[rgb(57,197,200)]" onClick={()=>handleModify(rowItem.id)}/>
         <BsFillTrash3Fill onClick={()=>handleDelete(rowItem.id)} className="w-6 h-6 cursor-pointer hover:scale-105 hover:text-[rgb(57,197,200)]" />
       </div>
     </div>
