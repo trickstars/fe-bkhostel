@@ -231,7 +231,7 @@ const Register = memo(() => {
             <img
               src={sideImage}
               alt=""
-              className="w-[430px] h-[629.6px]  hidden "
+              className="w-[430px] h-[629.6px] hidden"
             />
           </div>
 

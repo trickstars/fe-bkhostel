@@ -15,15 +15,21 @@ const Login = memo((props) => {
     minUserNameLen: 6,
     minPasswordLen: 6,
   };
-  
+
   const { mutate, isPending, isSuccess, isError, error, status } = useMutation({
     mutationFn: async (userData) => {
       const response = await loginUser(userData);
       console.log(response);
-      localStorage.setItem('token', response.token)
+      localStorage.setItem('token', response.token);
+      console.log(`role = ${response.result['user-info'].role}`);
+      localStorage.setItem('role', response.result['user-info'].role);
     },
     onSuccess: () => {
       // Go back to home page
+      const role = localStorage.getItem('role');
+      if (role === 'ADMIN') {
+         return navigate('/admin/statistics');
+      }
       navigate('/');
     },
   });
@@ -142,12 +148,14 @@ const Login = memo((props) => {
                     </>
                   )}
                 </button>
-                <button
-                  type="button"
-                  className="w-full md:w-auto flex justify-center items-center p-4 space-x-2 font-sans font-bold text-cyan-600 outline outline-cyan-600 bg-white rounded-md px-9 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
-                >
-                  <Link to="/register">Đăng ký</Link>
-                </button>
+                <Link to="/register">
+                  <button
+                    type="button"
+                    className="w-full md:w-auto flex justify-center items-center p-4 space-x-2 font-sans font-bold text-cyan-600 outline outline-cyan-600 bg-white rounded-md px-9 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                  >
+                    Đăng ký
+                  </button>
+                </Link>
               </div>
             </form>
 
@@ -183,11 +191,13 @@ const Login = memo((props) => {
           </div>
 
           {/* <!-- Right Side --> */}
-          <img
-            src={sideImage}
-            alt=""
-            className="w-[430px] h-[670px] hidden md:block"
-          />
+          <div className="rounded-r-2xl hidden w-[430px] md:block bg-[url('/src/assets/images/login/image.png')]">
+            <img
+              src={sideImage}
+              alt=""
+              className="w-[430px] h-[629.6px] hidden"
+            />
+          </div>
 
           {/* <!-- Close Button --> */}
           <Link to="/">

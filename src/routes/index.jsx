@@ -138,7 +138,8 @@ const router = createBrowserRouter([
   {
     path: '/services',
     element: <ServicesTable />,
-
+  },
+  {
     path: 'admin/statistics',
     element: <Statistics />,
     errorElement: <ErrorPage />,
