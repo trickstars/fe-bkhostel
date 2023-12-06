@@ -28,7 +28,6 @@ import Profile from '../pages/profile/Profile';
 import PostNew from '../pages/post-new/PostNew';
 import ServicesTable from '../pages/services-table/ServicesTable';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -73,7 +72,6 @@ const router = createBrowserRouter([
     element: <HomePage />,
     errorElement: <ErrorPage />,
   },
-
   {
     path: '/history-money',
     element: <UserLayout />,
@@ -120,7 +118,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-
     path: '/post-history',
     element: <PostHistory />,
     errorElement: <ErrorPage />,
