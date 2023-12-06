@@ -19,12 +19,11 @@ const FilterBar = () => {
 
     const onRefresh = () => {
         resetFilter()
-        setTimeout(() => refetch(), 1000)
-        // refetch()
+        setTimeout(() => refetch(), 500)
     }
 
     return (
-        <ul className="list-none w-full bg-[#0891B2] max-w-[1200px] my-2 py-2 px-2 border border-slate-300 rounded-md flex items-center gap-6">
+        <ul className=" list-none w-full bg-[#0891B2] max-w-[1200px] my-2 py-2 px-2 border border-slate-300 rounded-md flex items-center gap-6">
             <li className="flex items-center gap-2 bg-white rounded-md px-2 py-1">
                 <BsHouse />
                 <p className="text-sm font-semibold">Phòng trọ, nhà trọ</p>

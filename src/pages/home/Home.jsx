@@ -7,6 +7,7 @@ import PostList from './components/PostList';
 import RentalFilterList from './components/RentalFilterList';
 import Pagination from './components/Pagination';
 import FilterBar from './components/FilterBar';
+import Loading from './components/Loading';
 
 const Home = memo(() => {
   const { filterValue } = usePostFilterContext()
@@ -27,37 +28,45 @@ const Home = memo(() => {
     // }
   })
 
+
+  
   const POST_PER_PAGE = 4
-  const TOTAL_PAGE = Math.ceil(data?.totalPosts/POST_PER_PAGE)
+  const TOTAL_PAGE = 5
   const [ page, setPage ] = useState(1)
   const gotoPage = (page) => {
     setPage(_ => {
-      if(page <= 0) return 1
-      if(page > TOTAL_PAGE) return TOTAL_PAGE
-      return page
+      if(page <= 0) return 1;
+      if(page > TOTAL_PAGE) return TOTAL_PAGE;
+      return page;
     })
   }
 
-  if(isFetching) {
-    return <h1>Loading...</h1>
-  }
-  console.log(data);
+
 
   return (
-    <div className="w-full mt-8 flex flex-col items-center justify-center">
+    <div className="w-full mt-8 flex flex-col items-center min-h-screen">
       <FilterBar />
-      <div className='grid grid-cols-[1.6fr_1fr] mx-auto w-full  max-w-[1200px] content-center'>
-        <PostList 
-          postsInfo={data?.result}
-          totalPost={data?.totalPosts}
-        /> 
-        <RentalFilterList />
-        <Pagination 
-          currentPage = {page} 
-          totalPage = {TOTAL_PAGE}
-          gotoPage = {gotoPage}
-        />
-      </div>
+
+        <div className='grid grid-cols-[1.6fr_1fr] mx-auto w-full  max-w-[1200px] content-center'>
+          {isFetching 
+          ? 
+            <div className="flex flex-col gap-4 px-3 py-3 border border-gray-300 rounded-md h-[200px] ">
+              <Loading /> 
+            </div>
+
+          : 
+          <PostList 
+            postsInfo={data?.result}
+            totalPost={data?.totalPosts}
+          /> 
+          }
+          <RentalFilterList />
+          <Pagination 
+            currentPage = {page} 
+            totalPage = {5}
+            gotoPage = {gotoPage}
+          />
+        </div>
     </div>
   );
 });
