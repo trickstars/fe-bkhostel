@@ -1,4 +1,4 @@
-import Carousel from "better-react-carousel";
+// import Carousel from "better-react-carousel";
 import { useMediaQuery } from 'react-responsive';
 
 const Gallery = () => {
@@ -29,18 +29,20 @@ const Gallery = () => {
     },
   ];
   return (
-    <Carousel {...carouselProps} loop>
-      {slides.map((item, idx) => {
-        return (
-          <Carousel.Item key={idx}>
-            <img
-              className="h-28 w-full rounded-md"
-              src={item.url}
-            />
-          </Carousel.Item>
-        );
-      })}
-    </Carousel>
+    <div>Carousel</div>
+    // remove tạm để resolve bugs của styled-component
+    // <Carousel {...carouselProps} loop>
+    //   {slides.map((item, idx) => {
+    //     return (
+    //       <Carousel.Item key={idx}>
+    //         <img
+    //           className="h-28 w-full rounded-md"
+    //           src={item.url}
+    //         />
+    //       </Carousel.Item>
+    //     );
+    //   })}
+    // </Carousel>
   );
 };
 export default Gallery;
