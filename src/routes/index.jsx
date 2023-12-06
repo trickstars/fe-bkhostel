@@ -7,19 +7,37 @@ import LoginPage from '../pages/login/Login';
 import RegisterPage from '../pages/register/Register';
 import EnterEmailPage from '../pages/enter-email/EnterEmail';
 import SendPasswordPage from '../pages/send-password/SendPassword';
+import SavePost from '../pages/save-post/SavePost';
+import PostDetail from '../pages/post-detail/PostDetail';
 import PricingPage from '../pages/pricing/Pricing';
 import PostsPage from '../pages/posts/Posts';
 import DetailPost from '../pages/posts/DetailPost';
-import PostDetail from '../pages/post-detail/PostDetail'
-import SavePost from '../pages/save-post/SavePost';
+import Statistics from '../pages/statistics/Statistics';
 import { PostFilterContextProvider } from '../contexts/PostFilterContext';
+
+import PostHistory from '../pages/post-history/PostHistory';
+import Profile from '../pages/profile/Profile';
+import PostNew from '../pages/post-new/PostNew';
+import ServicesTable from '../pages/services-table/ServicesTable';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <UserLayout />,
     errorElement: <ErrorPage />,
-    children: [{ index: true, element: <PostFilterContextProvider><HomePage /></PostFilterContextProvider>}],
+    children: [
+      { index: true, element: <PostFilterContextProvider><HomePage /></PostFilterContextProvider> },
+      {
+        path: '/save-post',
+        element: <SavePost />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: '/post-detail/:id',
+        element: <PostDetail />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
   {
     path: '/login',
@@ -42,33 +60,35 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+    path: '/home',
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/save-post',
+    element: <SavePost />,
+    errorElement: <ErrorPage />,
+  },
+  // {
+  //   path: '/post-detail/:id',
+  //   element: <PostDetail />,
+  //   errorElement: <ErrorPage />,
+  // },
+  {
     path: '/pricing',
     element: <PricingPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: '/posts',
+    path: 'admin/posts',
     element: <PostsPage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: '/posts/detail',
+    path: 'admin/posts/detail',
     element: <DetailPost />,
     errorElement: <ErrorPage />,
   },
-  {
-    path: '/post/detail/:id',
-    element: <UserLayout />,
-    errorElement: <ErrorPage />,
-    children: [{ index: true, element: <PostDetail />}],
-  },
-  {
-    path: '/save-post',
-    element: <UserLayout />,
-    errorElement: <ErrorPage />,
-    children: [{ index: true, element: <SavePost />}],
-  },
-  
   // Admin routes will be updated soon
 ]);
 

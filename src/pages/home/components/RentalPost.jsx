@@ -4,7 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 const RentalPost = ({_id, assets, title, createDateAgo, price, area, address, description, created_by}) => {
     return (
 
-        <Link to={`post/detail/${_id}`} className='flex items-center gap-5 '>
+        <Link to={`post-detail/${_id}`} className='flex items-center gap-5 '>
             <div className='w-[250px] h-[250px] rounded-md overflow-hidden'>
                 <img 
                     className='object-cover h-full w-full'

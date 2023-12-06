@@ -33,6 +33,7 @@ const Home = memo(() => {
   const POST_PER_PAGE = 4
   const TOTAL_PAGE = 5
   const [ page, setPage ] = useState(1)
+  
   const gotoPage = (page) => {
     setPage(_ => {
       if(page <= 0) return 1;

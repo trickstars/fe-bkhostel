@@ -8,8 +8,6 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoHeartSharp } from "react-icons/io5";
 import { useParams } from 'react-router-dom';
 
-
-
 const OwnerDetail = ({owner}) => {
     const [liked, setLiked] = useState(false)
     const { id: postId } = useParams()

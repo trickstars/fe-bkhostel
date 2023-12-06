@@ -1,27 +1,46 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { fetchLikedPost } from '../../services/post/fetchlikedPost'
 import PostList from './components/PostList'
 import RentalFilterList from './components/RentalFilterList'
+import Loading from '../home/components/Loading'
 import Pagination from './components/Pagination'
 
 const SavePost = memo((props) => {
+    const [ page, setPage ] = useState(1)
     const { isLoading, isFetching, error, data } = useQuery({
-      queryKey: ["posts"],
+      queryKey: ["posts", "saved"],
       queryFn: () => fetchLikedPost({
-        page: 1,
+        page: page,
         userToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0MDAzZmI5MmZlMzM4MGNmOGJkYSIsInRva2VuVmVyc2lvbiI6MCwiaWF0IjoxNzAxNTk2OTgzfQ.m1INfJU-JAgbcXC-hIc-xKC3zqaRcjvjfvBq5NuMGxc"
       })
     })
-    if(isFetching) return <h1>Loading...</h1>
+
+    const TOTAL_PAGE = 5
     
+    const gotoPage = (page) => {
+      setPage(_ => {
+        if(page <= 0) return 1;
+        if(page > TOTAL_PAGE) return TOTAL_PAGE;
+        return page;
+      })
+    }    
 
   
     return (
       <div className='grid grid-cols-[1.6fr_1fr] mx-auto w-full content-center max-w-[1200px] my-5'>
-        <PostList postsInfo={data?.result}/> 
-        <RentalFilterList />
-        <Pagination />
+        {isFetching 
+          ? <div className='min-h-screen'><Loading /> </div>
+          : <div className='flex flex-col items-center'>
+              <PostList postsInfo={data?.result}/> 
+              <Pagination 
+                currentPage={page}
+                totalPage={5}
+                gotoPage={gotoPage}
+              />
+            </div>
+          }
+        {/* <RentalFilterList /> */}
       </div>
     );
 });
