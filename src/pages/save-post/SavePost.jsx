@@ -30,7 +30,7 @@ const SavePost = memo((props) => {
     return (
       <div className='grid grid-cols-[1.6fr_1fr] mx-auto w-full content-center max-w-[1200px] my-5'>
         {isFetching 
-          ? <div className='min-h-screen'><Loading /> </div>
+          ? <div className='min-h-screen text-center'><Loading /> </div>
           : <div className='flex flex-col items-center'>
               <PostList postsInfo={data?.result}/> 
               <Pagination 

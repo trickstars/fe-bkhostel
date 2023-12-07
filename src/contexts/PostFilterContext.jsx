@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react";
 const defaultFilterValue = {
     page: null,
     set: false,
+    type: null,
     price: {
         selectedText: "",
         minValue: null,

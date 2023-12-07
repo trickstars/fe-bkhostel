@@ -18,7 +18,8 @@ const Home = memo(() => {
       priceMin: filterValue?.price.minValue,
       priceMax: filterValue?.price.maxValue,
       areaMin: filterValue?.area.minValue,
-      areaMax: filterValue?.area.maxValue
+      areaMax: filterValue?.area.maxValue,
+      type: filterValue.type
     }),
     // async () => {
     //   const data = await fetch(`https://bkhostel.hcmut.tech/posts?page=${page}`)
