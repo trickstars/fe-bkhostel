@@ -1,5 +1,5 @@
 import { memo, useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from "react-router-dom"
 import { Link } from 'react-router-dom';
 import {
   HeartOutlined,
@@ -43,15 +43,10 @@ const Header = memo((props) => {
           {/* Favorite  */}
           <div className="flex items-center justify-center space-x-2">
             <HeartOutlined />
-            <Link to="/save-post">
-              <p className="font-medium">Yêu thích</p>
-            </Link>
+            <p className="font-medium">Yêu thích</p>
           </div>
           {isAuthenticated ? (
-            <div
-              className="options-container relative hover:cursor-pointer"
-              ref={optionsRef}
-            >
+            <div className="options-container relative" ref={optionsRef}>
               <div
                 onClick={() => setIsDropdownOpened((cur) => !cur)}
                 className="flex justify-center items-center space-x-2"
@@ -68,43 +63,28 @@ const Header = memo((props) => {
                 } z-10 absolute  left-[-135%] border mt-2  bg-white divide-y divide-gray-100 rounded-lg shadow-lg w-48 mx-auto`}
               >
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 mx-auto">
-                  <Link to="/profile">
-                    <li className="flex justify-start items-center space-x-1 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      <UserOutlined />
-
-                      <p>Trang cá nhân</p>
-                    </li>
-                  </Link>
-                  <Link to="/post-new">
-                    <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      <PlusCircleOutlined />
-
-                      <p>Đăng tin</p>
-                    </li>
-                  </Link>
-                  <Link to="/save-post">
-                    <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      <HeartOutlined />
-
-                      <p>Trang yêu thích</p>
-                    </li>
-                  </Link>
-                  <Link to="/history-money">
-                    <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      <DollarOutlined />
-                      <p>Nạp tiền</p>
-                    </li>
-                  </Link>
-
+                  <li className="flex justify-start items-center space-x-1 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <UserOutlined />
+                    <p>Trang cá nhân</p>
+                  </li>
+                  <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <PlusCircleOutlined />
+                    <p>Đăng tin</p>
+                  </li>
+                  <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <HeartOutlined />
+                    <p>Trang yêu thích</p>
+                  </li>
+                  <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <DollarOutlined />
+                    <p>Nạp tiền</p>
+                  </li>
                   <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <HeartOutlined />
                     <p>Trang yêu thích</p>
                   </li>
 
-                  <li
-                    onClick={logoutUser}
-                    className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
+                  <li onClick={logoutUser} className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                     <p className="text-red-600">Đăng xuất</p>
                   </li>
                 </ul>
@@ -129,16 +109,13 @@ const Header = memo((props) => {
             </>
           )}
 
-          <Link to="/post-new">
-            <button
-              type="button"
-              className="flex space-x-2 items-center justify-center bg-cyan-600 p-4 px-9 text-center text-white rounded-lg"
-            >
-              <p className="font-medium">Đăng tin</p>
-              <PlusCircleOutlined />
-            </button>
-          </Link>
-
+          <button
+            type="button"
+            className="flex space-x-2 items-center justify-center bg-cyan-600 p-4 px-9 text-center text-white rounded-lg"
+          >
+            <p className="font-medium">Đăng tin</p>
+            <PlusCircleOutlined />
+          </button>
           {/* Post */}
         </div>
       </div>
@@ -174,10 +151,7 @@ const Header = memo((props) => {
           <HoverDivider />
         </div>
         <div className="group hover:cursor-pointer">
-          <Link to="/services">
-            <span>Bảng giá dịch vụ</span>
-          </Link>
-
+          <span>Bảng giá dịch vụ</span>
           <HoverDivider />
         </div>
       </div>
