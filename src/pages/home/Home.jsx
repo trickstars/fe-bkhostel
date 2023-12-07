@@ -12,22 +12,23 @@ import Loading from './components/Loading';
 const Home = memo(() => {
   const { filterValue } = usePostFilterContext()
   const { isLoading, isFetching, error, data } = useQuery({
-    queryKey: ["posts"],
-    queryFn: async () => await fetchPost({
-      page: filterValue?.page,
-      priceMin: filterValue?.price.minValue,
-      priceMax: filterValue?.price.maxValue,
-      areaMin: filterValue?.area.minValue,
-      areaMax: filterValue?.area.maxValue,
-      type: filterValue.type
-    }),
+    queryKey: ['posts'],
+    queryFn: async () =>
+      await fetchPost({
+        page: filterValue?.page,
+        priceMin: filterValue?.price.minValue,
+        priceMax: filterValue?.price.maxValue,
+        areaMin: filterValue?.area.minValue,
+        areaMax: filterValue?.area.maxValue,
+        type: filterValue.type,
+      }),
     // async () => {
     //   const data = await fetch(`https://bkhostel.hcmut.tech/posts?page=${page}`)
     //   .then(res => res.json())
     //   .then(data => data)
     //   return data
     // }
-  })
+  });
 
 
   

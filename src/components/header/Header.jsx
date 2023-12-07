@@ -19,7 +19,7 @@ import { usePostFilterContext } from '../../contexts/PostFilterContext';
 import { rentingTypes } from './constant';
 
 const Header = memo((props) => {
-  const { filterValue, updateFilterValue } = usePostFilterContext();
+  const { updateFilterValue } = usePostFilterContext();
   const { refetch } = useQuery({
     queryKey: ['posts'],
     enabled: false,
@@ -53,15 +53,15 @@ const Header = memo((props) => {
   // };
   const rentingTypeHandler = (typeValue) => {
     console.log(`rentingTypes = ${typeValue}`);
-    updateFilterValue({ key: 'type', value: typeValue });
     navigate('/');
-    refetch();
+    updateFilterValue({ key: 'type', value: typeValue });
+    setTimeout(() => refetch(), 100);
   };
   return (
     <nav className="container mx-auto px-20 py-4 border-b-2 border-b-gray-300">
       <div className="flex flex-col justify-between items-center md:flex-row space-y-4 md:space-y-0 md:space-x-4 mx-auto">
         <span
-          onClick={() => refetch()}
+          onClick={() => rentingTypeHandler(null)}
           className="text-4xl text-cyan-600 font-semibold cursor-pointer"
         >
           {/* <Link to="/">BKHostel</Link> */}
@@ -182,7 +182,7 @@ const Header = memo((props) => {
 
       <div className="hidden md:flex justify-between items-center mt-4 text-[13px]  md:space-x-4 mx-auto">
         {/* <div>Quà theo lễ</div> */}
-        <div onClick={() => refetch()} className="group hover:cursor-pointer">
+        <div onClick={() => rentingTypeHandler(null)} className="group hover:cursor-pointer">
           <span>
             {/* <Link to="/">Trang chủ</Link> */}
             Trang chủ

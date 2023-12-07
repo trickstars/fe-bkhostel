@@ -1,9 +1,9 @@
 import { RouterProvider } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
 import router from './routes/index';
 import { PostFilterContextProvider } from "./contexts/PostFilterContext";
+import { QueryClientProvider } from '@tanstack/react-query';
 export const queryClient = new QueryClient();
-
 
 export default function App() {
   return (
