@@ -192,7 +192,7 @@ const Header = memo((props) => {
           </span>
           <HoverDivider />
         </div>
-        {rentingTypes.map((idx, rentingType) => (
+        {rentingTypes.map((rentingType, idx) => (
           <div
             key={idx}
             onClick={() => rentingTypeHandler(rentingType.id)}
