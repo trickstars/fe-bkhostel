@@ -143,7 +143,7 @@ const Sidebar = ({}) => {
         {/* </a> */}
         <button onClick={logoutUser} className="w-full">
           <div className="text-start my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item">
-            Thoát
+            Đăng xuất
           </div>
         </button>
       </div>
