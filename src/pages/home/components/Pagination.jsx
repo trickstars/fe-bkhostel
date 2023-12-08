@@ -8,13 +8,14 @@ const Pagination = ({currentPage, totalPage, gotoPage}) => {
 
     const { refetch } = useQuery({
         queryKey: ["posts"],
-        enabled: false
+        enabled: false,
+        refetchOnWindowFocus: false
     })  
 
     const reloadPage = (page) => {
         gotoPage(page)
         updateFilterValue({key: "page", value: page})
-        refetch()
+        setTimeout(() => refetch(), 100) // set little timeout to prevent stale data bug
     }
 
     const pages = Array.from({length: totalPage}, (_, i) => i + 1)

@@ -7,13 +7,15 @@ import Loading from '../home/components/Loading'
 import Pagination from './components/Pagination'
 
 const SavePost = memo((props) => {
+    const userToken = localStorage.getItem("token")
     const [ page, setPage ] = useState(1)
     const { isLoading, isFetching, error, data } = useQuery({
       queryKey: ["posts", "saved"],
       queryFn: () => fetchLikedPost({
         page: page,
-        userToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0MDAzZmI5MmZlMzM4MGNmOGJkYSIsInRva2VuVmVyc2lvbiI6MCwiaWF0IjoxNzAxNTk2OTgzfQ.m1INfJU-JAgbcXC-hIc-xKC3zqaRcjvjfvBq5NuMGxc"
-      })
+        userToken: userToken
+      }),
+      refetchOnWindowFocus: false, // default: true
     })
 
     const TOTAL_PAGE = 5

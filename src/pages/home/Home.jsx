@@ -22,6 +22,7 @@ const Home = memo(() => {
         areaMax: filterValue?.area.maxValue,
         type: filterValue.type,
       }),
+      refetchOnWindowFocus: false
     // async () => {
     //   const data = await fetch(`https://bkhostel.hcmut.tech/posts?page=${page}`)
     //   .then(res => res.json())

@@ -5,7 +5,8 @@ import { usePostFilterContext } from "../../../contexts/PostFilterContext";
 const RentalFilter = ({title, options, type, cols=1}) => {
   const { refetch } = useQuery({
     queryKey: ["posts"],
-    enabled: false
+    enabled: false,
+    refetchOnWindowFocus: false
   })
   
 

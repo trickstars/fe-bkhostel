@@ -8,16 +8,23 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoHeartSharp } from "react-icons/io5";
 import { useParams } from 'react-router-dom';
 
-const OwnerDetail = ({owner}) => {
+const OwnerDetail = ({owner, isLiked}) => {
     const [liked, setLiked] = useState(false)
     const { id: postId } = useParams()
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmM0MDAzZmI5MmZlMzM4MGNmOGJkYSIsInRva2VuVmVyc2lvbiI6MCwiaWF0IjoxNzAxNTk2OTgzfQ.m1INfJU-JAgbcXC-hIc-xKC3zqaRcjvjfvBq5NuMGxc"
+    const userToken = localStorage.getItem("token")
+
     const likePostMutation = useMutation({
-        mutationFn: () => likePost(token, postId),
+        mutationFn: () => likePost(userToken, postId),
         onSuccess: data => {
             setLiked(true)
         }
     })
+
+    const onPostLike = () => {
+        if(userToken != null) {
+            likePostMutation.mutate()
+        }
+    }
 
     return (
         <div className='flex flex-col items-center gap-4 px-3 py-4 border border-gray-300 rounded-md h-fit bg-[#FEBB02] ml-10 '>
@@ -35,14 +42,14 @@ const OwnerDetail = ({owner}) => {
                 <p className='text-sm  font-semibold'>Nhắn Zalo</p>
             </button>
             <button 
-                onClick={() => {likePostMutation.mutate()}}
-                className= {liked 
+                onClick={onPostLike}
+                className= {(isLiked || liked)
                     ? 'flex items-center gap-2 justify-center rounded-md px-2 py-2 bg-white w-full max-w-[250px] text-[#EE664C]'
                     : 'flex items-center gap-2 justify-center rounded-md px-2 py-2 bg-white w-full max-w-[250px] hover:text-[#EE664C]'
 
                 }
             >
-                {liked
+                {(isLiked || liked)
                 ? <IoHeartSharp className='w-[20px] h-[20px]' />
                 : <IoMdHeartEmpty className='w-[20px] h-[20px] '/>
                 }

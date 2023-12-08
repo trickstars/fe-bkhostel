@@ -6,12 +6,13 @@ const Pagination = ({currentPage, totalPage, gotoPage}) => {
 
     const { refetch } = useQuery({
         queryKey: ["posts", "saved"],
-        enabled: false
+        enabled: false,
+        refetchOnWindowFocus: false
     })  
 
     const reloadPage = (page) => {
         gotoPage(page)
-        refetch()
+        setTimeout(() => refetch(), 100)
     }
 
     const pages = Array.from({length: totalPage}, (_, i) => i + 1)
