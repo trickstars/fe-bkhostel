@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 const LeftSideBar = () => {
     const navigate = useNavigate();
     const navigateToHistory = () => {
-        navigate('/history-money/history');
+        navigate('/HistoryMoney/history');
     }
     return (
         <div className="font-semibold row-start-1 row-span-7 col-start-1 col-span-2 pl-3 text-lg bg-[#F5F4F3]">

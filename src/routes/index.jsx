@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import UserLayout from '../layouts/UserLayout';
+import AuthUserLayout from '../layouts/AuthUserLayout';
 // import AdminLayout from '../layouts/AdminLayout';
 import ErrorPage from '../pages/error/Error';
 import HomePage from '../pages/home/Home';
@@ -18,7 +19,7 @@ import Statistics from '../pages/statistics/Statistics';
 // import { PostFilterContextProvider } from '../contexts/PostFilterContext';
 
 import HistoryMoney from '../pages/history-money/HistoryMoney';
-import Recharge from '../pages/history-money/Recharge';
+import Recharge from '../pages/history-money/recharge';
 import AddUser from '../pages/user-detail/AddUser';
 import ChangePassWord from '../pages/user-detail/ChangePassword';
 import UserInfo from '../pages/user-detail/UserInfo';
@@ -32,7 +33,7 @@ import ServicesTable from '../pages/services-table/ServicesTable';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (<UserLayout />),
+    element: <UserLayout />,
     // (
     //   <PostFilterContextProvider>
     //     <UserLayout />
@@ -57,6 +58,38 @@ const router = createBrowserRouter([
       {
         path: '/services',
         element: <ServicesTable />,
+      },
+    ],
+  },
+  {
+    path: '/user',
+    element: <AuthUserLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: 'post-new',
+        element: <PostNew />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'post-history',
+        element: <PostHistory />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'HistoryMoney',
+        element: <HistoryMoney />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'Recharge',
+        element: <Recharge />,
+        errorElement: <ErrorPage />,
       },
     ],
   },
@@ -86,7 +119,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/history-money',
+    path: '/HistoryMoney',
     element: <UserLayout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <HistoryMoney /> }],

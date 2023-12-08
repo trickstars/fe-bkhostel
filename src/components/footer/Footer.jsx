@@ -14,7 +14,7 @@ const Footer = memo((props) => {
           </span>
         </section>
         <section>
-          <h1 className="font-medium">Về chúng tôi</h1>
+          <h1 className="font-bold text-lg">Về chúng tôi</h1>
           <div className="text-[13px] font-normal">
             <p className="hover:cursor-pointer">Trang chủ</p>
             <p className="hover:cursor-pointer">Giới thiệu</p>
@@ -25,7 +25,7 @@ const Footer = memo((props) => {
           </div>
         </section>
         <section>
-          <h1 className="font-medium">Hỗ trợ khách hàng</h1>
+          <h1 className="font-bold text-lg">Hỗ trợ khách hàng</h1>
           <div className="text-[13px] font-normal">
             <p className="hover:cursor-pointer">Câu hỏi thường gặp</p>
             <p className="hover:cursor-pointer">Hướng dẫn đăng tin</p>
@@ -34,7 +34,7 @@ const Footer = memo((props) => {
           </div>
         </section>
         <section>
-          <h1 className="font-medium">Liên hệ với chúng tôi</h1>
+          <h1 className="font-bold text-lg">Liên hệ với chúng tôi</h1>
           <div className="flex justify-center items-center space-x-1 ">
             <div>
               <img src={facebookIcon} alt="facebook icon" className="w-8 h-8" />
