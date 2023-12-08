@@ -1,7 +1,3 @@
-
-
-
-
 /* eslint-disable react/display-name */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line react/display-name
@@ -20,72 +16,20 @@ const authToken = localStorage.getItem("token");
 const config = { Authorization: authToken };
 
 const Posts = memo(() => {
-  const originPosts = [
-    {
-      id: 1,
-      postName: "Nhà mặt tiền",
-      seller: "Đức Phan",
-      date: "17:45 03-11-2023",
-      location: "Tp. Hồ Chí Minh",
-      status: "Đã xác nhận",
-    },
-    {
-      id: 2,
-      postName: "Ký túc xá",
-      seller: "Đức Phan",
-      date: "17:45 03-11-2023",
-      location: "Tp. Hồ Chí Minh",
-      status: "Đang chờ",
-    },
-    {
-      id: 3,
-      postName: "Nhà nguyên căn",
-      seller: "Đức Phan",
-      date: "17:45 03-11-2023",
-      location: "Tp. Hồ Chí Minh",
-      status: "Đã xác nhận",
-    },
-    {
-      id: 4,
-      postName: "Phòng 10m2",
-      seller: "Đức Phan",
-      date: "17:45 03-11-2023",
-      location: "Tp. Hồ Chí Minh",
-      status: "Đang chờ",
-    },
-    {
-      id: 5,
-      postName: "Phòng 1 người",
-      seller: "Đức Phan",
-      date: "17:45 03-11-2023",
-      location: "Tp. Hồ Chí Minh",
-      status: "Đang chờ",
-    },
-    {
-      id: 6,
-      postName: "Nhà cho thuê",
-      seller: "Đức Phan",
-      date: "17:45 03-11-2023",
-      location: "Tp. Hồ Chí Minh",
-      status: "Đã xác nhận",
-    },
-    {
-      id: 7,
-      postName: "Chung cư",
-      seller: "Đức Phan",
-      date: "17:45 03-11-2023",
-      location: "Tp. Hồ Chí Minh",
-      status: "Đã xác nhận",
-    },
-  ];
+  const [renderedPost, setRenderedPost] = useState({});
   const [postsAdmin, setPostsAdmin] = useState({});
-  const [pageNum,setPageNum] = useState(1);
+  const [pageNum, setPageNum] = useState(()=>{
+    let pageNo = localStorage.getItem("postPage");
+    return pageNo?pageNo:1;
+  });
   const getPosts = async (pageNum) => {
     try {
-      await axios.get(`${postURL}?page=${pageNum}`,{headers:config}).then((res) => {
-        console.log('get post-admin: ',res.data);
-        setPostsAdmin(res.data);
-      });
+      await axios
+        .get(`${postURL}?page=${pageNum}`, { headers: config })
+        .then((res) => {
+          setPostsAdmin(res.data);
+          setRenderedPost(res.data);
+        });
     } catch (error) {
       const customError = new Error();
       customError.message = error.response.data.message;
@@ -94,63 +38,58 @@ const Posts = memo(() => {
   };
   useEffect(() => {
     getPosts(pageNum);
+    localStorage.removeItem("postPage");
   }, [pageNum]);
-
-  const { state } = useLocation();
-  console.log(state);
-
-  // const [posts, setPosts] = useState(() => {
-  //   if (state) {
-  //     const handleType = state?.verifiedId ? "verify" : "delete";
-  //     const handleId = state?.verifiedId ?? state?.deletedId;
-
-  //     let len = originPosts.length;
-  //     let i = 0;
-  //     while (i < len) {
-  //       if (originPosts[i].id == handleId) break;
-  //       i++;
-  //     }
-  //     if (handleType === "verify") {
-  //       originPosts[i].status = "Đã xác nhận";
-  //     } else {
-  //       originPosts.splice(i, 1);
-  //     }
-  //     return originPosts;
-  //   }
-  //   return originPosts;
-  // });
   const [seletedFilter, setSelectedFilter] = useState("All");
   const navigate = useNavigate();
 
   const handlePageChange = (newPage) => {
-    console.log("change ",newPage);
     setPageNum(newPage);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+    setSelectedFilter("All");
   };
-  // const handleDeletedItem = (id) => {
-  //   let temp = posts.filter((item) => item.id !== id);
-  //   setPosts(temp);
-  // };
-  // const handleFilter = (type) => {
-  //   setSelectedFilter(type);
-  //   if (type !== seletedFilter) {
-  //     if (type === "All") {
-  //       setPosts(originPosts);
-  //     } else {
-  //       let filteredPosts = originPosts.filter((item) => {
-  //         return item.status === type;
-  //       });
-  //       setPosts(filteredPosts);
-  //     }
-  //   }
-  // };
 
+  const handleDeletedItem = (e,id) => {
+    e.stopPropagation();
+    let temp = renderedPost?.posts?.filter((item) => item._id !== id);
+    setRenderedPost({totalPosts:temp.length,posts:temp});
+  };
+
+  const handleFilter = (filterType) => {
+    console.log(postsAdmin);
+    setSelectedFilter(filterType);
+    if (filterType !== seletedFilter) {
+      if (filterType === "All") {
+        setRenderedPost(postsAdmin);
+      } else {
+        let filteredPosts = postsAdmin.posts.filter((item) => {
+          return item.status === filterType;
+        });
+        setRenderedPost({
+          totalPosts: filteredPosts.length,
+          posts: filteredPosts,
+        });
+      }
+    }
+  };
+  const formatDate = (originDate) => {
+    const date = new Date(originDate);
+    const formattedDate = `${date.getDate().toString().padStart(2, "0")}/${(
+      date.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, "0")}/${date.getFullYear()} ${date
+      .getHours()
+      .toString()
+      .padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
+    return formattedDate;
+  };
   //CSS Style variable
   const activeFilter = "bg-[#25BEB9] text-white";
-  const nonactiveFilter =
+  const noActiveFilter =
     "hover:bg-[#25BEB9] hover:bg-opacity-50 hover:text-white border border-[#25BEB9]";
 
   return (
@@ -165,34 +104,34 @@ const Posts = memo(() => {
                 <div className="w-full md:w-1/2 lg:w-1/3 flex justify-between flex-col md:flex-row mb-2 md:mb-0">
                   <button
                     className={`rounded-lg mb-1 md:mb-0 md:px-2 lg:px-5 ml-2 md:ml-0 ${
-                      seletedFilter === "All" ? activeFilter : nonactiveFilter
+                      seletedFilter === "All" ? activeFilter : noActiveFilter
                     }`}
                     onClick={() => {
-                      // handleFilter("All");
+                      handleFilter("All");
                     }}
                   >
                     Tất cả
                   </button>
                   <button
                     className={`rounded-lg mb-1 md:mb-0 md:px-2 lg:px-5 ${
-                      seletedFilter === "Đang chờ"
+                      seletedFilter === "PENDING"
                         ? activeFilter
-                        : nonactiveFilter
+                        : noActiveFilter
                     } ml-2`}
                     onClick={() => {
-                      // handleFilter("Đang chờ");
+                      handleFilter("PENDING");
                     }}
                   >
                     Đang chờ
                   </button>
                   <button
                     className={`rounded-lg mb-1 md:mb-0 md:px-2 lg:px-5 ${
-                      seletedFilter === "Đã xác nhận"
+                      seletedFilter === "ACCEPTED"
                         ? activeFilter
-                        : nonactiveFilter
+                        : noActiveFilter
                     } ml-2`}
                     onClick={() => {
-                      // handleFilter("Đã xác nhận");
+                      handleFilter("ACCEPTED");
                     }}
                   >
                     Đã xác nhận
@@ -234,41 +173,56 @@ const Posts = memo(() => {
                   <div className="col-span-2">Trạng thái</div>
                   <div className="col-span-2">Thao tác</div>
                 </div>
-                {postsAdmin?.posts?.length
-                  ? postsAdmin.posts.map((post, idx) => {
+                {renderedPost?.posts?.length
+                  ? renderedPost.posts.map((post, idx) => {
                       return (
                         <div
                           className="grid grid-cols-16 py-2 text-xs md:text-xl md:hover:bg-blue-100 hover:rounded-lg"
                           key={idx}
                           onClick={() =>
-                            navigate("../admin/posts/detail", { state: post })
+                            navigate("../admin/posts/detail", {
+                              state: { ...post, page: pageNum },
+                            })
                           }
                         >
-                          <div className="hidden md:col-span-1 md:block">{idx+1}</div>
-                          <div className="col-span-4 md:col-span-3">
+                          <div className="hidden md:col-span-1 md:block">
+                            {idx + 1}
+                          </div>
+                          <div className="col-span-4 md:col-span-3 text-left">
                             {post.title}
                           </div>
-                          <div className="col-span-2">{post.created_by.full_name}</div>
-                          <div className="col-span-3">{post.createDate}</div>
-                          <div className="col-span-3">Quận {post.full_address.district}</div>
+                          <div className="col-span-2">
+                            {post.created_by.full_name}
+                          </div>
+                          <div className="col-span-3">
+                            {formatDate(post.createDate)}
+                          </div>
+                          <div className="col-span-3">
+                            Quận {post.full_address.district}
+                          </div>
                           <div className="col-span-3 md:col-span-2">
                             {" "}
                             <span
                               className={`${
                                 post?.status == "ACCEPTED"
                                   ? "bg-[#59d9cc]"
-                                  : post?.status=="PENDING"?"bg-[#f5a201]":"bg-red-700"
+                                  : post?.status == "PENDING"
+                                  ? "bg-[#f5a201]"
+                                  : "bg-red-700"
                               } text-white px-1 lg:px-4 md:text-sm lg:py-1 inline-block rounded-sm lg:rounded-xl`}
                             >
                               {post.status}
                             </span>
                           </div>
                           <div className="col-span-1 md:col-span-2 flex justify-center">
-                            <Link to={"../admin/posts/detail"} state={post}>
+                            <Link
+                              to={"../admin/posts/detail"}
+                              state={{ ...post, page: pageNum }}
+                            >
                               <BiSolidDetail className="hidden lg:block mr-1 md:mr-2 lg:mr-4 w-6 h-6 cursor-pointer hover:scale-105 hover:text-[rgb(57,197,200)]" />
                             </Link>
                             <BsFillTrash3Fill
-                              // onClick={/*() => handleDeletedItem(post.id)*/}
+                              onClick={(e) => {handleDeletedItem(e,post._id)}}
                               className="mt-[-4px] md:mt-0 w-6 h-6 cursor-pointer hover:scale-105 hover:text-[rgb(57,197,200)]"
                             />
                           </div>
@@ -279,7 +233,8 @@ const Posts = memo(() => {
               </div>
               <div className="mt-8 lg:mt-12">
                 <span className="ml-4">
-                  Hiển thị 1 đến {postsAdmin.totalPosts} của {postsAdmin.totalPosts} mục
+                  Hiển thị 1 đến {renderedPost.totalPosts} của{" "}
+                  {renderedPost.totalPosts} mục
                 </span>
                 <div className="flex justify-center text-center">
                   <AdminPagination
