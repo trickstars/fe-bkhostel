@@ -67,7 +67,7 @@ const Header = memo((props) => {
         </span>
         <div className="flex flex-col items-start  justify-center md:items-center md:flex-row space-y-2 md:space-y-0 space-x-0 md:space-x-16">
           {/* Favorite  */}
-          <Link to="/save-post">
+          <Link to={(isAuthenticated)?"/save-post" : "/login"}>
             <div className="flex items-center justify-center space-x-2">
               <HeartOutlined />
 
