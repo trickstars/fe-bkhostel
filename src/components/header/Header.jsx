@@ -19,7 +19,7 @@ import { usePostFilterContext } from '../../contexts/PostFilterContext';
 import { rentingTypes } from './constant';
 
 const Header = memo((props) => {
-  const { updateFilterValue } = usePostFilterContext();
+  const { updateFilterValue, updateActiveTab } = usePostFilterContext();
   const { refetch } = useQuery({
     queryKey: ['posts'],
     enabled: false,
@@ -45,12 +45,10 @@ const Header = memo((props) => {
     localStorage.clear();
     navigate('/login');
   };
-  // const routingHandler = () => {
-  //   if (isAuthenticated) {
-  //     return navigate('/post-new');
-  //   }
-  //   navigate('/login');
-  // };
+  const routingHandler = (route, activeValue) => {
+    updateActiveTab(activeValue);
+    navigate(route);
+  };
   const rentingTypeHandler = (typeValue) => {
     console.log(`rentingTypes = ${typeValue}`);
     navigate('/');
@@ -97,21 +95,23 @@ const Header = memo((props) => {
                 } z-10 absolute  left-[-135%] border mt-2  bg-white divide-y divide-gray-100 rounded-lg shadow-lg w-48 mx-auto`}
               >
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 mx-auto">
-                  <Link to="/profile">
-                    <li className="flex justify-start items-center space-x-1 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  <Link to="/user/profile">
+                    <li 
+                    onClick={() => routingHandler("/user/profile", 3)}
+                    className="flex justify-start items-center space-x-1 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <UserOutlined />
 
                       <p>Trang cá nhân</p>
                     </li>
                   </Link>
-                  <Link to="/post-new">
+                  <Link to="/user/post-new">
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <PlusCircleOutlined />
 
                       <p>Đăng tin</p>
                     </li>
                   </Link>
-                  <Link to="/post-history">
+                  <Link to="/user/post-history">
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <FileSearchOutlined />
                       <p>Lịch sử đăng tin</p>
@@ -124,13 +124,13 @@ const Header = memo((props) => {
                       <p>Trang yêu thích</p>
                     </li>
                   </Link>
-                  <Link to="/history-money">
+                  <Link to="/user/history-money">
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <DollarOutlined />
                       <p>Nạp tiền</p>
                     </li>
                   </Link>
-                  <Link to="/history-money/history">
+                  <Link to="/user/history-money/history">
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <HistoryOutlined />
                       <p>Lịch sử nạp tiền</p>
@@ -166,7 +166,7 @@ const Header = memo((props) => {
 
           <button
             onClick={() =>
-              isAuthenticated ? navigate('/post-new') : navigate('/login')
+              isAuthenticated ? navigate('/user/post-new') : navigate('/login')
             }
             type="button"
             className="flex space-x-2 items-center justify-center bg-cyan-600 p-4 px-9 text-center text-white rounded-lg"
@@ -182,15 +182,19 @@ const Header = memo((props) => {
 
       <div className="hidden md:flex justify-between items-center mt-4 text-[13px]  md:space-x-4 mx-auto">
         {/* <div>Quà theo lễ</div> */}
-        <div onClick={() => rentingTypeHandler(null)} className="group hover:cursor-pointer">
+        <div
+          onClick={() => rentingTypeHandler(null)}
+          className="group hover:cursor-pointer"
+        >
           <span>
             {/* <Link to="/">Trang chủ</Link> */}
             Trang chủ
           </span>
           <HoverDivider />
         </div>
-        {rentingTypes.map((rentingType) => (
+        {rentingTypes.map((idx, rentingType) => (
           <div
+            key={idx}
             onClick={() => rentingTypeHandler(rentingType.id)}
             className="group hover:cursor-pointer"
           >

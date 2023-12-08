@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import UserLayout from '../layouts/UserLayout';
+import AuthUserLayout from '../layouts/AuthUserLayout';
 // import AdminLayout from '../layouts/AdminLayout';
 import ErrorPage from '../pages/error/Error';
 import HomePage from '../pages/home/Home';
@@ -31,7 +32,7 @@ import ServicesTable from '../pages/services-table/ServicesTable';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (<UserLayout />),
+    element: <UserLayout />,
     // (
     //   <PostFilterContextProvider>
     //     <UserLayout />
@@ -56,6 +57,38 @@ const router = createBrowserRouter([
       {
         path: '/services',
         element: <ServicesTable />,
+      },
+    ],
+  },
+  {
+    path: '/user',
+    element: <AuthUserLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: 'post-new',
+        element: <PostNew />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'post-history',
+        element: <PostHistory />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'history-money',
+        element: <HistoryMoney />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'history-money/history',
+        element: <Recharge />,
+        errorElement: <ErrorPage />,
       },
     ],
   },
