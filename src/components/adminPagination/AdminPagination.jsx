@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { memo } from "react";
-import { FaArrowLeft, FaArrowRight  } from "react-icons/fa6";
-
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 // eslint-disable-next-line react/display-name, react/prop-types
-const Pagination = memo(({handleChange, pageStatus}) => {
+const Pagination = memo(({ handleChange, pageStatus }) => {
   let selectedPageCSS = "text-white bg-[rgb(57,197,200)] rounded-md";
-  let notSelectedPageCSS = "text-black bg-white border border-color-[rgb(57,197,200)] rounded-md hover:bg-[rgb(57,197,200)] hover:text-white";
+  let notSelectedPageCSS =
+    "text-black bg-white border border-color-[rgb(57,197,200)] rounded-md hover:bg-[rgb(57,197,200)] hover:text-white";
 
   function renderPage(n) {
     let htmls = [];
@@ -15,9 +15,11 @@ const Pagination = memo(({handleChange, pageStatus}) => {
         <li key={i}>
           <button
             className={`px-3 py-1 transition-colors duration-150 focus:shadow-outline ${
-              pageStatus === i ? selectedPageCSS : notSelectedPageCSS
+              pageStatus == i ? selectedPageCSS : notSelectedPageCSS
             }`}
-            onClick={()=>{handleChange(i)}}
+            onClick={() => {
+              handleChange(i);
+            }}
           >
             {i}
           </button>
@@ -34,25 +36,32 @@ const Pagination = memo(({handleChange, pageStatus}) => {
           <li>
             <button
               className={`px-3 py-1 transition-colors duration-150 focus:shadow-outline   ${
-                pageStatus.current === 0
+                pageStatus === 1
                   ? "opacity-30 cursor-default"
                   : "text-black hover:text-[rgb(57,197,200)] hover:scale-105 transition"
               }`}
             >
-              <FaArrowLeft className="text-xl" onClick={()=>{if (pageStatus.current!==0 ) handleChange(pageStatus.current-1)}}/>
+              <FaArrowLeft
+                className="text-xl"
+                onClick={() => {
+                  if (pageStatus !== 1) handleChange(pageStatus - 1);
+                }}
+              />
             </button>
           </li>
           {renderPage(3)}
           <li>
             <button
               className={`px-3 py-1 transition-colors duration-150 focus:shadow-outline ${
-                pageStatus.current === pageStatus.quantity - 1
+                pageStatus === 3
                   ? "cursor-default opacity-30"
                   : "text-black hover:text-[rgb(57,197,200)] hover:scale-105 transition"
               }`}
-              onClick={()=>{if (pageStatus.current!==(pageStatus.quantity-1)) handleChange(pageStatus.current+1)}}
+              onClick={() => {
+                if (pageStatus.current !== 3) handleChange(pageStatus + 1);
+              }}
             >
-              <FaArrowRight className="text-xl"/>
+              <FaArrowRight className="text-xl" />
             </button>
           </li>
         </ul>

@@ -11,11 +11,11 @@ import SendPasswordPage from '../pages/send-password/SendPassword';
 import SavePost from '../pages/save-post/SavePost';
 import PostDetail from '../pages/post-detail/PostDetail';
 
-import PricingPage from '../pages/pricing/Pricing';
-import PostsPage from '../pages/posts/Posts';
-import DetailPost from '../pages/posts/DetailPost';
+import PricingPage from '../pages/admin-package-management/Pricing';
+import PostsPage from '../pages/admin-post-management/Posts';
+import DetailPost from '../pages/admin-post-management/DetailPost';
 import Statistics from '../pages/statistics/Statistics';
-import { PostFilterContextProvider } from '../contexts/PostFilterContext';
+// import { PostFilterContextProvider } from '../contexts/PostFilterContext';
 
 import HistoryMoney from '../pages/history-money/history-money';
 import Recharge from '../pages/history-money/recharge';
