@@ -124,13 +124,13 @@ const Header = memo((props) => {
                       <p>Trang yêu thích</p>
                     </li>
                   </Link>
-                  <Link to="/user/history-money">
+                  <Link to="/user/HistoryMoney">
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <DollarOutlined />
                       <p>Nạp tiền</p>
                     </li>
                   </Link>
-                  <Link to="/user/history-money/history">
+                  <Link to="/user/HistoryMoney/history">
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <HistoryOutlined />
                       <p>Lịch sử nạp tiền</p>

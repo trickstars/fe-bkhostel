@@ -9,8 +9,8 @@ export const path = {
     post_new: '/post-new',
     post_history: '/post-history',
     profile: '/profile',
-    recharge: '/history-money',
-    recharge_history: '/history-money/history',
+    recharge: '/HistoryMoney',
+    recharge_history: '/HistoryMoney/history',
   },
   // admin: {},
 };
