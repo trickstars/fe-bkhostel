@@ -13,9 +13,11 @@ const RentalDetail = ({
     area, 
     postDate, 
     desc, 
+    phone_num,
     created_by: owner, 
     location = {lat: 10.734363531931315, lng: 106.72015766304695}
 }) => {
+    const isAuthenticated = (localStorage.getItem("token") != null)
     return (
         <div className="flex flex-col gap-4 px-3 py-3 border border-gray-300 rounded-md h-fit">
             <div className='w-4/5 h-[350px] self-center overflow-hidden rounded-md my-2'>
@@ -57,12 +59,12 @@ const RentalDetail = ({
                 <div className='bg-gray-300 w-4/5 h-[0.5px] my-2'/>
                 <div className='grid grid-cols-2  w-1/2 text-sm'>
                     <div>Số điện thoại</div>
-                    <div>{owner.phoneNumber}</div>
+                    <div>{isAuthenticated && `0${phone_num}`}</div>
                 </div>
                 <div className='bg-gray-300 w-4/5 h-[0.5px] my-2'/>
                 <div className='grid grid-cols-2  w-1/2 text-sm'>
                     <div>Zalo</div>
-                    <div>{owner.phoneNumber}</div>
+                    <div>{isAuthenticated && `0${phone_num}`}</div>
                 </div>
             </div>
 

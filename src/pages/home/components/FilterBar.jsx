@@ -10,7 +10,7 @@ import FilterSelect from './FilterSelect';
 import { usePostFilterContext } from '../../../contexts/PostFilterContext';
 
 const FilterBar = () => {
-  const { filterValue, resetFilter } = usePostFilterContext();
+  const { filterValue, resetFilter, updateFilterValue } = usePostFilterContext();
   const { refetch } = useQuery({
     queryKey: ['posts'],
     enabled: false,
@@ -18,9 +18,16 @@ const FilterBar = () => {
 
   const onRefresh = () => {
     resetFilter();
-    setTimeout(() => refetch(), 500);
+    setTimeout(() => refetch(), 100);
   };
 
+  const applyMultiFilter = () => {
+    updateFilterValue({
+      key: "page",
+      value: 1
+    })
+    setTimeout(() => refetch(), 100)
+  }
   return (
     <ul className=" list-none w-full bg-[#0891B2] max-w-[1200px] my-2 py-2 px-2 border border-slate-300 rounded-md flex items-center gap-6">
       <li className="flex items-center gap-2 bg-white rounded-md px-2 py-1">
@@ -57,7 +64,7 @@ const FilterBar = () => {
         <button
           disabled={!filterValue?.set} // disable search if no filter applied
           className="flex items-center gap-2 bg-white rounded-md px-2 py-1 cursor-pointer"
-          onClick={() => refetch()}
+          onClick={applyMultiFilter}
         >
           <IoSearch />
           <p className="text-sm font-semibold">Tìm kiếm</p>

@@ -14,6 +14,7 @@ const RentalFilter = ({title, options, type, cols=1}) => {
   const { filterValue, updateFilterValue } = usePostFilterContext()
 
   const onFilter = (type, option) => {
+    // update filter option
     updateFilterValue({
       key: type, 
       value: {
@@ -22,7 +23,12 @@ const RentalFilter = ({title, options, type, cols=1}) => {
         maxValue: option.maxValue
       }
     })
-    refetch()
+    // refetch on page 1
+    updateFilterValue({
+      key: "page", 
+      value: 1
+    })
+    setTimeout(() => refetch(), 100)
   }
 
   return (

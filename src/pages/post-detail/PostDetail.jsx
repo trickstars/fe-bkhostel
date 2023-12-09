@@ -21,7 +21,7 @@ const PostDetail = () => {
     return (
         <div className='grid grid-cols-[1.6fr_1fr] mx-auto w-full content-center max-w-[1200px] my-5'>
             <RentalDetail {...rentalDetail} />
-            <OwnerDetail owner={rentalDetail?.created_by} isLiked={rentalDetail?.is_favorite} />
+            <OwnerDetail owner={rentalDetail?.created_by} isLiked={rentalDetail?.is_favorite} phoneNumber={rentalDetail?.phone_num} />
         </div>
     )
 }

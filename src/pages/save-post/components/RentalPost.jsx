@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { FaRegUser } from "react-icons/fa";
 
 const RentalPost = ({_id, assets, title, createDateAgo, price, area, address, description, created_by, phone_num}) => {
+    const isAuthenticated = (localStorage.getItem("token") != null)
   return (
     <Link to={`/post-detail/${_id}`}>
         <div className='flex items-center gap-5'>
@@ -26,10 +27,12 @@ const RentalPost = ({_id, assets, title, createDateAgo, price, area, address, de
                         <FaRegUser />
                         <p>{created_by.full_name}</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <button className='bg-[#0891B2] text-white text-sm px-2 py-1 rounded-md'>Gọi {phone_num} </button>
-                        <button className='border-[#0891B2] border text-[#0891B2] text-sm px-2 py-1 rounded-md'>Nhắn Zalo </button>
-                    </div>
+                    {isAuthenticated &&
+                        <div className="flex items-center gap-2">
+                            <button className='bg-[#0891B2] text-white text-sm px-2 py-1 rounded-md'>Gọi {`0${phone_num}`} </button>
+                            <button className='border-[#0891B2] border text-[#0891B2] text-sm px-2 py-1 rounded-md'>Nhắn Zalo </button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
