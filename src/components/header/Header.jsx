@@ -90,10 +90,6 @@ const Header = memo((props) => {
   const checkAuth = () => {
     if (authToken === null) navigate('/login');
   }
-  // useEffect(() => {
-    
-  // }, [])
-
   return (
     <nav className="container mx-auto px-20 py-4 border-b-2 border-b-gray-300">
       <div className="flex flex-col justify-between items-center md:flex-row space-y-4 md:space-y-0 md:space-x-4 mx-auto">
