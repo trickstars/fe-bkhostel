@@ -55,13 +55,13 @@ const Recharge = () => {
         getData();
     }, []);
     return (
-        <div className="grid grid-cols-8 gap-3 mr-20 ">
-            <Sidebar item={3} />
-            <div className="flex flex-col row-start-1 row-span-7 col-start-3 col-span-6 ml-5">
+        <div className="grid grid-cols-none">
+            {/* <Sidebar item={3} /> */}
+            <div className="flex flex-col col-start-3 col-end-8 ml-5">
                 <div className="px-3 py-4 mt-6 border-b border-gray rounded-md h-fit text-5xl">
                     NẠP TIỀN
                 </div>
-                <div className="px-3 py-4 mt-3 bg-gray-300 border-b border-gray rounded-md h-fit text-2xl">
+                <div className="px-3 py-4 mt-3 w-100 bg-gray-300 border-b border-gray rounded-md h-fit text-2xl">
                     <div>Số dư ví</div>
                     <div className="pt-10">{infoUser.balance}</div>
                 </div>

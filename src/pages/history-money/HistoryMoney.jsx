@@ -4,7 +4,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useLocation } from "react-router-dom";
 
 const HistoryMoney = () => {
-    const {state} = useLocation();    
+    const {state} = useLocation(); 
     const [infoUser, setInfoUser] = useState([]);
     const [alert, setAlert] = useState("");
     const getData = async () => {
@@ -27,9 +27,9 @@ const HistoryMoney = () => {
     }, []);
 
     return (
-        <div className="grid grid-cols-8 gap-3 mr-20 ">
-            <Sidebar item={4} />
-            <div className="flex flex-col row-start-1 row-span-7 col-start-3 col-span-6  ">
+        <div className="grid grid-cols-32 gap-3">
+            {/* <Sidebar item={4} /> */}
+            <div className="flex flex-col row-start-1 row-span-7 col-start-3 col-span-6 ">
                 <div className="px-3 py-4 mt-6 border-b border-gray rounded-md h-fit text-5xl mb-6">
                     LỊCH SỬ NẠP TIỀN
                 </div>

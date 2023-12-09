@@ -23,10 +23,11 @@ const Sidebar = ({}) => {
 
   // const [active, setActive] = useState([0,0,0,0,0])
   const historyMoneny = () => {
-    navigate('/HistoryMoney', { state: { profile, authToken } });
+    
+    navigate('user/HistoryMoney');
   };
   const recharge = () => {
-    navigate('/recharge', { state: { profile, authToken } });
+    navigate('user/Recharge');
   };
   const checkAuth = () => {
     if (authToken === null) navigate('/login');
@@ -120,9 +121,10 @@ const Sidebar = ({}) => {
         </Link>
         {/* </a> */}
         {/* <a href="./recharge"> */}
-        <Link to="/user/HistoryMoney" onClick={() => setActive(4)}>
+        <Link to="/user/Recharge" state={{ profile, authToken }} onClick={() => setActive(4)}>
           <div
-            onClick={recharge} className={
+            onClick={recharge}
+            className={
               active === 4
                 ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'
                 : 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item'
@@ -133,9 +135,10 @@ const Sidebar = ({}) => {
         </Link>
         {/* </a> */}
         {/* <a href="./HistoryMoney"> */}
-        <Link to="/user/HistoryMoney/history" onClick={() => setActive(5)}>
+        <Link to="/user/HistoryMoney" state={{ profile, authToken }} onClick={() => setActive(5)}>
           <div
-            onClick={historyMoneny} className={
+            onClick={historyMoneny} 
+            className={
               active === 5
                 ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'
                 : 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item'

@@ -119,7 +119,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/HistoryMoney',
+    path: '/history-money',
     element: <UserLayout />,
     errorElement: <ErrorPage />,
     children: [{ index: true, element: <HistoryMoney /> }],
