@@ -3,22 +3,52 @@ import { useState, useEffect } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useLocation } from "react-router-dom";
 
+const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
+const authToken = localStorage.getItem('token');
+const config = { Authorization: authToken };
 const url = `https://bkhostel.hcmut.tech/users/`;
 const submitLink = `https://bkhostel.hcmut.tech/recharge/create_payment_url`;
 
 const Recharge = () => {
-    const { state } = useLocation();
-    console.log(state.profile);
-    const [infoUser, setInfoUser] = useState(state.profile);
+    // const { state } = useLocation();
+    // console.log(state.profile);
+    const [infoUser, setInfoUser] = useState({
+      username: '',
+      password: '',
+      role: 'USER',
+      status: 'ACTIVE',
+      email: '',
+      full_name: '',
+      phone: '',
+      avatar: '',
+    });
+
     const [amount, setAmount] = useState({
         amount: 0,
         language: "vn"
     });
+
+    const getUser = async () => {
+      try {
+        const res = await axios
+          .get(url, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+        console.log(res.data);
+        getData(res.data._id);
+        console.log(res.data._id);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+
     const getData = async () => {
         try {
             const res = await axios.get(url, {
                 headers: {
-                    'Authorization': `Bearer ${state.authToken}`
+                    'Authorization': `Bearer ${authToken}`
                 }
             });
             setInfoUser(res.data);
@@ -41,7 +71,7 @@ const Recharge = () => {
         try {
             const res = await axios.post(submitLink, amount, {
                 headers: {
-                    'Authorization': `Bearer ${state.authToken}`
+                    'Authorization': `Bearer ${authToken}`
                 }
             });
             window.location.replace(res.data.paymentURL);
@@ -53,7 +83,7 @@ const Recharge = () => {
         }
     }
     useEffect(() => {
-        getData();
+        getUser();
     }, []);
     return (
         <div className="flex flex-col col-start-3 col-end-8 ml-5">
@@ -76,7 +106,7 @@ const Recharge = () => {
             <input onChange={handleChange} value={amount.amount} name="amount" className="px-3 py-3 border border-gray rounded-md h-14 text-2xl" />
 
             <button onClick={handleSubmit} className='justify-center items-center rounded-md px-3 py-3 mt-8 mb-16 bg-[#0000FF]'>
-                <p className='text-sm text-white text-3xl font-semibold'>Nạp Tiền</p>
+                <p className='text-white text-3xl font-semibold'>Nạp Tiền</p>
             </button>
         </div>
     )
