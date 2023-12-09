@@ -18,17 +18,46 @@ import { useQuery } from '@tanstack/react-query';
 import { usePostFilterContext } from '../../contexts/PostFilterContext';
 import { rentingTypes } from './constant';
 
+const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
+const authToken = localStorage.getItem('token')
+const config = {'Authorization': authToken};
+
 const Header = memo((props) => {
+  const [profile, setProfile] = useState({
+    "username": "",
+    "password": "",
+    "role": "USER",
+    "status": "ACTIVE",
+    "email": "",
+    "full_name": "",
+    "phone": "",
+    "avatar": "",
+  });
   const { updateFilterValue, updateActiveTab } = usePostFilterContext();
   const { refetch } = useQuery({
     queryKey: ['posts'],
     enabled: false,
   });
+  
+  const getUser = async () => {
+    console.log("get User")
+    try {
+        const res = await axios.get(`${baseURL}/`, {headers: config}).then(res => setProfile(res.data));
+        console.log(res);
+    } catch (error) {
+        const customError = new Error();
+        customError.message = error.response.data.message;
+        console.log(customError.message);
+        throw customError;
+    }
+
+  };
   const navigate = useNavigate();
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
   const optionsRef = useRef(null);
 
   useEffect(() => {
+    
     let optionSelectionHandler = (e) => {
       if (!optionsRef.current?.contains(e.target)) {
         setIsDropdownOpened(false);
@@ -36,6 +65,9 @@ const Header = memo((props) => {
       }
     };
     document.addEventListener('mousedown', optionSelectionHandler);
+    checkAuth();
+    // activeItem(props);
+    getUser();
     return () =>
       document.removeEventListener('mousedown', optionSelectionHandler);
   });
@@ -55,6 +87,13 @@ const Header = memo((props) => {
     updateFilterValue({ key: 'type', value: typeValue });
     setTimeout(() => refetch(), 100);
   };
+  const checkAuth = () => {
+    if (authToken === null) navigate('/login');
+  }
+  // useEffect(() => {
+    
+  // }, [])
+
   return (
     <nav className="container mx-auto px-20 py-4 border-b-2 border-b-gray-300">
       <div className="flex flex-col justify-between items-center md:flex-row space-y-4 md:space-y-0 md:space-x-4 mx-auto">
@@ -124,13 +163,13 @@ const Header = memo((props) => {
                       <p>Trang yêu thích</p>
                     </li>
                   </Link>
-                  <Link to="/user/HistoryMoney">
+                  <Link to="/user/Recharge" state={{ profile, authToken }} >
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <DollarOutlined />
                       <p>Nạp tiền</p>
                     </li>
-                  </Link>
-                  <Link to="/user/HistoryMoney/history">
+                  </Link>  
+                  <Link to="/user/HistoryMoney" state={{ profile, authToken }}>
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <HistoryOutlined />
                       <p>Lịch sử nạp tiền</p>

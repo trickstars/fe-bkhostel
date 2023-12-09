@@ -2,6 +2,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { usePostFilterContext } from '../../contexts/PostFilterContext';
+
 const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
 const authToken = localStorage.getItem('token')
 const config = {'Authorization': authToken};
