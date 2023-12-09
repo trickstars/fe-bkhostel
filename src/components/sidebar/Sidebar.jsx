@@ -1,14 +1,14 @@
 import axios from 'axios';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { usePostFilterContext } from '../../contexts/PostFilterContext';
 
 const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
 const authToken = localStorage.getItem('token')
-const config = {'Authorization': authToken};
+const config = { 'Authorization': authToken };
 
-const Sidebar = ({}) => {
-  const {activeTab} = usePostFilterContext();
+const Sidebar = ({ }) => {
+  const { activeTab } = usePostFilterContext();
   const [active, setActive] = useState(activeTab);
   const navigate = useNavigate();
   const [profile, setProfile] = useState({
@@ -24,7 +24,7 @@ const Sidebar = ({}) => {
 
   // const [active, setActive] = useState([0,0,0,0,0])
   const historyMoneny = () => {
-    
+
     navigate('user/HistoryMoney');
   };
   const recharge = () => {
@@ -35,32 +35,22 @@ const Sidebar = ({}) => {
   }
 
   const logoutUser = () => {
-      localStorage.removeItem('token');
-      navigate('/login');
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   const getUser = async () => {
     console.log("get User")
     try {
-        await axios.get(`${baseURL}/`, {headers: config}).then(res => setProfile(res.data));
+      await axios.get(`${baseURL}/`, { headers: config }).then(res => setProfile(res.data));
     } catch (error) {
-        const customError = new Error();
-        customError.message = error.response.data.message;
-        console.log(customError.message);
-        throw customError;
+      const customError = new Error();
+      customError.message = error.response.data.message;
+      console.log(customError.message);
+      throw customError;
     }
 
   };
-
-  // const activeItem = (props) => {
-  //   const items = [0,0,0,0,0];
-  //   // eslint-disable-next-line react/prop-types
-  //   items[props.item] = 1
-  //   setActive([...items])
-
-  //   // console.log(items)
-  // }
-
   useEffect(() => {
     checkAuth();
     // activeItem(props);
@@ -138,7 +128,7 @@ const Sidebar = ({}) => {
         {/* <a href="./HistoryMoney"> */}
         <Link to="/user/HistoryMoney" state={{ profile, authToken }} onClick={() => setActive(5)}>
           <div
-            onClick={historyMoneny} 
+            onClick={historyMoneny}
             className={
               active === 5
                 ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'

@@ -17,7 +17,7 @@ const style_list = "flex flex-row items-center pl-3 ml-2 hover:bg-[#B6D6F2] roun
 
 const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
 const authToken = localStorage.getItem('token')
-const config = {'Authorization': authToken};
+const config = { 'Authorization': authToken };
 
 const LeftSideBar = () => {
     const [show, setShow] = useState(false);
@@ -37,7 +37,7 @@ const LeftSideBar = () => {
     }
     const navigate = useNavigate();
     const navigateUserInfo = () => {
-        navigate('/admin/userInfo', { state: {profile, authToken} });
+        navigate('/admin/userInfo', { state: { profile, authToken } });
     }
     const navigateStatics = () => {
         navigate('/admin/statistics');
@@ -48,14 +48,14 @@ const LeftSideBar = () => {
     const getUser = async () => {
         console.log("get User")
         try {
-            await axios.get(`${baseURL}/`, {headers: config}).then(res => setProfile(res.data));
+            await axios.get(`${baseURL}/`, { headers: config }).then(res => setProfile(res.data));
         } catch (error) {
             const customError = new Error();
             customError.message = error.response.data.message;
             console.log(customError.message);
             throw customError;
         }
-    
+
     };
     useEffect(() => {
         checkAuth();
@@ -75,7 +75,7 @@ const LeftSideBar = () => {
                 {show === true ? <RiArrowDownSFill onClick={handleClick} style={{ marginLeft: '105px', fontSize: '20px' }} />
                     : <RiArrowDropRightFill onClick={handleClick} style={{ marginLeft: '100px', fontSize: '30px' }} />}
             </div>
-            {show == true ? <UserDetail profile={profile} token={authToken}/> : <></>}
+            {show == true ? <UserDetail profile={profile} token={authToken} /> : <></>}
             <div className={style_list}>
                 <CiCreditCard2 style={style} />
                 <div className="my-8 hover:cursor-pointer ml-2">Post</div>
