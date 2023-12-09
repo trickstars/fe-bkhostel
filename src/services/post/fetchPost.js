@@ -1,9 +1,12 @@
 import { makeRequest } from "../makeRequest";
 
 
-export async function fetchPost({page, priceMin, priceMax, areaMin, areaMax, type}) {
+export async function fetchPost({page, priceMin, priceMax, areaMin, areaMax, type, token}) {
     const posts = await makeRequest('/posts/filter', {
         method: "post",
+        headers: {
+            'Authorization': token
+        },
         params: {
             page: page,
             priceMin: priceMin,

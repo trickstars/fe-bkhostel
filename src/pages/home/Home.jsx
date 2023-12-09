@@ -11,6 +11,7 @@ import Loading from './components/Loading';
 
 const Home = memo(() => {
   const { filterValue } = usePostFilterContext()
+  const userToken = localStorage.getItem("token")
   const { isLoading, isFetching, error, data } = useQuery({
     queryKey: ['posts'],
     queryFn: async () =>
@@ -21,6 +22,7 @@ const Home = memo(() => {
         areaMin: filterValue?.area.minValue,
         areaMax: filterValue?.area.maxValue,
         type: filterValue.type,
+        token: userToken
       }),
       refetchOnWindowFocus: false
     // async () => {
