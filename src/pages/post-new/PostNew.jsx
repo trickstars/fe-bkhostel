@@ -7,11 +7,12 @@ import { useState, useEffect } from 'react';
 const locationURL = import.meta.env.VITE_BACKEND_API + '/location';
 const postsURL = import.meta.env.VITE_BACKEND_API + '/posts';
 const servicesURL = import.meta.env.VITE_BACKEND_API + '/services';
-const authToken = localStorage.getItem('token')
-// const config = {'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmQ3YTQyODJiYmE2MzJjZDVjZjBlMCIsInRva2VuVmVyc2lvbiI6MCwiaWF0IjoxNzAxNjczNTcyfQ.ddG0VTMD-ZE0dJxGQL5SbHtAQyqO2MlZ_U121M5B8gY"};
-const config = { Authorization: authToken };
 
 const PostNew = () => {
+    const authToken = localStorage.getItem('token')
+    // const config = {'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmQ3YTQyODJiYmE2MzJjZDVjZjBlMCIsInRva2VuVmVyc2lvbiI6MCwiaWF0IjoxNzAxNjczNTcyfQ.ddG0VTMD-ZE0dJxGQL5SbHtAQyqO2MlZ_U121M5B8gY"};
+    const config = { Authorization: authToken };
+
     const [district, setDistrict] = useState([''])
     const [ward , setWard] = useState([''])
     const [services , setServices] = useState([''])
@@ -27,38 +28,19 @@ const PostNew = () => {
     })
     const getServices = async () => {
         console.log("get Services")
-        try {
-            await axios.get(`${servicesURL}`).then(res => setServices(res.data));
-        } catch (error) {
-            const customError = new Error();
-            customError.message = error.response.data.message;
-            console.log(customError.message);
-            throw customError;
-        }
+
+        await axios.get(`${servicesURL}`).then(res => setServices(res.data));
 
     };
     const getDistricts = async () => {
         console.log("get District")
-        try {
-            await axios.get(`${locationURL}/districts`).then(res => setDistrict(res.data));
-        } catch (error) {
-            const customError = new Error();
-            customError.message = error.response.data.message;
-            console.log(customError.message);
-            throw customError;
-        }
+        await axios.get(`${locationURL}/districts`).then(res => setDistrict(res.data));
+
 
     };
     const getWards = async (id) => {
         console.log("get Wards " + id)
-        try {
-            await axios.get(`${locationURL}/districts/${id}/wards`).then(res => setWard(res.data));
-        } catch (error) {
-            const customError = new Error();
-            customError.message = error.response.data.message;
-            console.log(customError.message);
-            throw customError;
-        }
+        await axios.get(`${locationURL}/districts/${id}/wards`).then(res => setWard(res.data));
     }
 
     const convertBase64 = (file) => {
@@ -122,16 +104,10 @@ const PostNew = () => {
 
     const uploadNewPost = async (postData) => {
         console.log(postData);
-        try {
-            const response = await axios.post(`${postsURL}/upload`, postData, {headers: config});
-            console.log(response.data);
-            setIsSubmit(true);
-        } catch (error) {
-            const customError = new Error();
-            customError.message = error.response.data.message;
-            console.log(customError.message);
-            throw customError;
-        }
+        const response = await axios.post(`${postsURL}/upload`, postData, {headers: config});
+        console.log(response.data);
+        setIsSubmit(true);
+
     };
 
     useEffect(() => {
@@ -208,12 +184,12 @@ const PostNew = () => {
                                 </div>
                             </div>
 
-                            <div className="flex justify-between">
+                            {/* <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full">
                                     <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="full_address">Địa chỉ chính xác</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" disabled id="full_address" name="full_address"/>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="flex justify-between mt-8">
                                 {/* <div className="bg-[#000] w-full h-60 mr-4"></div> */}

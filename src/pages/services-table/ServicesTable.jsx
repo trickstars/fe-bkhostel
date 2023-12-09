@@ -1,8 +1,11 @@
-const servicesURL = import.meta.env.VITE_BACKEND_API + '/services';
 
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+
+const servicesURL = import.meta.env.VITE_BACKEND_API + '/services';
+
 const ServicesTable = () => {
+
     const [services , setServices] = useState([''])
     const avantages = [
         "- Lượt xem nhiều gấp 30 lần so với tin thường",
@@ -20,14 +23,8 @@ const ServicesTable = () => {
 
     const getServices = async () => {
         console.log("get Services")
-        try {
-            await axios.get(`${servicesURL}`).then(res => setServices(res.data));
-        } catch (error) {
-            const customError = new Error();
-            customError.message = error.response.data.message;
-            console.log(customError.message);
-            throw customError;
-        }
+        await axios.get(`${servicesURL}`).then(res => setServices(res.data));
+
 
     };
 

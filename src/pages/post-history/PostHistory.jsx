@@ -1,24 +1,18 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 const baseURL = import.meta.env.VITE_BACKEND_API + '/posts/user';
-const authToken = localStorage.getItem('token')
-const config = {'Authorization': authToken};
 
 const PostHistory = () => {
+    const navigate = useNavigate()
+    const authToken = localStorage.getItem('token')
+    const config = {'Authorization': authToken};
+
     const [posts, setPosts] = useState([])
 
     const getPosts = async () => {
         console.log("get Posts")
-        try {
-            await axios.get(`${baseURL}`, {headers: config}).then(res => setPosts(res.data));
-        } catch (error) {
-            const customError = new Error();
-            customError.message = error.response.data.message;
-            console.log(customError.message);
-            throw customError;
-        }
-
+        await axios.get(`${baseURL}`, {headers: config}).then(res => setPosts(res.data));
     };
 
     useEffect(() => {
@@ -27,7 +21,7 @@ const PostHistory = () => {
     },[])
 
     return (
-            <div className="col-start-3 col-span-8  gap-3  max-w-[1536px] mx-auto">
+            <div className="col-start-3 col-span-8  gap-3 ">
                 <div className="flex flex-col row-start-1 row-span-7 col-start-3 col-span-6 ml-5 mb-10">
                     <div className="px-3 py-4 mt-6 border-b border-gray rounded-md h-fit text-5xl">
                         Lịch sử tin đăng
@@ -57,7 +51,7 @@ const PostHistory = () => {
                                     </tr>
                                 )
                             })
-                            : <div className="py-2">Bạn chưa có tin đăng nào. Bấm <a className="text-[#0000ff]" href="../post-new">vào đây</a> để bắt đầu đăng tin</div>
+                            : <div className="py-2">Bạn chưa có tin đăng nào. Bấm <button className="text-[#0000ff]" type="button" onClick={() => navigate("/user/post-new")}>vào đây</button> để bắt đầu đăng tin</div>
                         }
                         </tbody>
 

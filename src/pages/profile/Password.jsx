@@ -47,14 +47,7 @@ const Password = (props) => {
 
     const changePassword = async (passwordData) => {
         console.log(passwordData);
-        try {
-            await axios.post(`${baseURL}/change-password`, passwordData, {headers: config}).then(()=>setIsPasswordChange(true)).then(() => login(passwordData));
-        } catch (error) {
-            const customError = new Error();
-            customError.message = error.response.data.message;
-            console.log(customError.message);
-            throw customError;
-        }
+        await axios.post(`${baseURL}/change-password`, passwordData, {headers: config}).then(()=>setIsPasswordChange(true)).then(() => login(passwordData));
     };
     useEffect(() => {
         getUsername()
