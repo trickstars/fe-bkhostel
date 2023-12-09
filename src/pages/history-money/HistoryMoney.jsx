@@ -2,12 +2,13 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
-const authToken = localStorage.getItem('token');
-const config = { Authorization: authToken };
-const url = `https://bkhostel.hcmut.tech/users/`;
+
 
 const HistoryMoney = () => {
+  const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
+  const authToken = localStorage.getItem('token');
+  const config = { Authorization: authToken };
+  const url = `https://bkhostel.hcmut.tech/users/`;
   const { state } = useLocation();
   // console.log(state.profile);
   const [infoUser, setInfoUser] = useState([]);

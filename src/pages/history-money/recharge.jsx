@@ -3,13 +3,14 @@ import { useState, useEffect } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useLocation } from "react-router-dom";
 
-const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
-const authToken = localStorage.getItem('token');
-const config = { Authorization: authToken };
-const url = `https://bkhostel.hcmut.tech/users/`;
-const submitLink = `https://bkhostel.hcmut.tech/recharge/create_payment_url`;
+
 
 const Recharge = () => {
+    const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
+    const authToken = localStorage.getItem('token');
+    const config = { Authorization: authToken };
+    const url = `https://bkhostel.hcmut.tech/users/`;
+    const submitLink = `https://bkhostel.hcmut.tech/recharge/create_payment_url`;
     // const { state } = useLocation();
     // console.log(state.profile);
     const [infoUser, setInfoUser] = useState({
