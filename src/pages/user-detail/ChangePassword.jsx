@@ -6,10 +6,9 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const url = `https://bkhostel.hcmut.tech/admin/change-password`;
-const tokenUrl = `https://bkhostel.hcmut.tech/auth/sign-in`;
 
 const ChangePassWord = () => {
-    const {state} = useLocation();
+    const { state } = useLocation();
     const [userInfo, setUserInfo] = useState({
         // id: '656ed077456cd9380f56795c',
         id: state.profile._id,
@@ -36,7 +35,11 @@ const ChangePassWord = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(url, userInfo)
+            const res = await axios.post(url, userInfo, {
+                headers: {
+                    'Authorization': `Bearer ${state.token}`
+                }
+            })
                 .then(res => console.log(res.data.message));
             setAlert('visible');
         } catch (error) {
@@ -66,9 +69,7 @@ const ChangePassWord = () => {
                         <p>Đổi mật khẩu thành công</p>
                     </div>
                     <form className="w-1/2 mx-auto mt-16 mb-16">
-
                         <div class="grid gap-6 mb-10 md:grid-cols-1">
-                            
                             <div>
                                 <input value={userInfo.id} type="text" id="Id" class="bg-gray-50 border border-[#B6D6F2] text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Id" disabled />
                             </div>
