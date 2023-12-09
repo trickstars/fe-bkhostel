@@ -11,8 +11,7 @@ const Sidebar = ({ }) => {
   
   const authToken = localStorage.getItem('token');
   const config = { Authorization: authToken };
-  const { activeTab } = usePostFilterContext();
-  const [active, setActive] = useState(activeTab);
+  const { activeTab, updateActiveTab } = usePostFilterContext();
   const navigate = useNavigate();
   const [profile, setProfile] = useState({
     "username": "",
@@ -75,10 +74,10 @@ const Sidebar = ({ }) => {
       </div>
       {/* <a href="./post-new"> */}
       <div className="text-[13px] font-medium">
-        <Link to="/user/post-new" onClick={() => setActive(1)}>
+        <Link to="/user/post-new" onClick={() => updateActiveTab(1)}>
           <div
             className={
-              active === 1
+              activeTab === 1
                 ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'
                 : 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item'
             }
@@ -89,10 +88,10 @@ const Sidebar = ({ }) => {
 
         {/* </a> */}
         {/* <a href="./post-history"> */}
-        <Link to="/user/post-history" onClick={() => setActive(2)}>
+        <Link to="/user/post-history" onClick={() => updateActiveTab(2)}>
           <div
             className={
-              active === 2
+              activeTab === 2
                 ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'
                 : 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item'
             }
@@ -102,10 +101,10 @@ const Sidebar = ({ }) => {
         </Link>
         {/* </a> */}
         {/* <a href="./profile"> */}
-        <Link to="/user/profile" onClick={() => setActive(3)}>
+        <Link to="/user/profile" onClick={() => updateActiveTab(3)}>
           <div
             className={
-              active === 3
+              activeTab === 3
                 ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'
                 : 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item'
             }
@@ -115,11 +114,15 @@ const Sidebar = ({ }) => {
         </Link>
         {/* </a> */}
         {/* <a href="./recharge"> */}
-        <Link to="/user/Recharge" state={{ profile, authToken }} onClick={() => setActive(4)}>
+        <Link
+          to="/user/Recharge"
+          state={{ profile, authToken }}
+          onClick={() => updateActiveTab(4)}
+        >
           <div
             onClick={recharge}
             className={
-              active === 4
+              activeTab === 4
                 ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'
                 : 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item'
             }
@@ -129,11 +132,15 @@ const Sidebar = ({ }) => {
         </Link>
         {/* </a> */}
         {/* <a href="./HistoryMoney"> */}
-        <Link to="/user/HistoryMoney" state={{ profile, authToken }} onClick={() => setActive(5)}>
+        <Link
+          to="/user/HistoryMoney"
+          state={{ profile, authToken }}
+          onClick={() => updateActiveTab(5)}
+        >
           <div
             onClick={historyMoneny}
             className={
-              active === 5
+              activeTab === 5
                 ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'
                 : 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item'
             }

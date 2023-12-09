@@ -139,19 +139,25 @@ const Header = memo((props) => {
                     <p>Trang cá nhân</p>
                   </li>
 
-                  <Link to="/user/post-new">
-                    <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      <PlusCircleOutlined />
+                  {/* <Link to="/user/post-new"> */}
+                  <li
+                    onClick={() => routingHandler('/user/post-new', 1)}
+                    className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    <PlusCircleOutlined />
 
-                      <p>Đăng tin</p>
-                    </li>
-                  </Link>
-                  <Link to="/user/post-history">
-                    <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      <FileSearchOutlined />
-                      <p>Lịch sử đăng tin</p>
-                    </li>
-                  </Link>
+                    <p>Đăng tin</p>
+                  </li>
+                  {/* </Link> */}
+                  {/* <Link to="/user/post-history"> */}
+                  <li
+                    onClick={() => routingHandler('/user/post-history', 2)}
+                    className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    <FileSearchOutlined />
+                    <p>Lịch sử đăng tin</p>
+                  </li>
+                  {/* </Link> */}
                   <Link to="/save-post">
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <HeartOutlined />
@@ -159,18 +165,24 @@ const Header = memo((props) => {
                       <p>Trang yêu thích</p>
                     </li>
                   </Link>
-                  <Link to="/user/Recharge">
-                    <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      <DollarOutlined />
-                      <p>Nạp tiền</p>
-                    </li>
-                  </Link>
-                  <Link to="/user/HistoryMoney">
-                    <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  {/* <Link to="/user/Recharge"> */}
+                  <li
+                    onClick={() => routingHandler('/user/Recharge', 4)}
+                    className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    <DollarOutlined />
+                    <p>Nạp tiền</p>
+                  </li>
+                  {/* </Link> */}
+                  {/* <Link to="/user/HistoryMoney"> */}
+                    <li
+                      onClick={() => routingHandler('/user/HistoryMoney', 5)}
+                      className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
                       <HistoryOutlined />
                       <p>Lịch sử nạp tiền</p>
                     </li>
-                  </Link>
+                  {/* </Link> */}
                   <li
                     onClick={logoutUser}
                     className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
