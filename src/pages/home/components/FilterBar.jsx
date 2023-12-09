@@ -5,7 +5,7 @@ import { ImCoinPound } from 'react-icons/im';
 import { FaRegSquare } from 'react-icons/fa';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { useQuery } from '@tanstack/react-query';
-import { areaFilter, priceFilter } from './constant';
+import { areaFilter, priceFilter, postTypeFilter } from './constant';
 import FilterSelect from './FilterSelect';
 import { usePostFilterContext } from '../../../contexts/PostFilterContext';
 
@@ -32,12 +32,14 @@ const FilterBar = () => {
     <ul className=" list-none w-full bg-[#0891B2] max-w-[1200px] my-2 py-2 px-2 border border-slate-300 rounded-md flex items-center gap-6">
       <li className="flex items-center gap-2 bg-white rounded-md px-2 py-1">
         <BsHouse />
-        <p className="text-sm font-semibold">Phòng trọ, nhà trọ</p>
+        <p className="text-sm font-semibold">Tp.HCM</p>
       </li>
-      <li className="flex items-center gap-2 bg-white rounded-md px-2 py-1">
-        <BsHouse />
-        <p className="text-sm font-semibold">Toàn quốc</p>
-      </li>
+      <FilterSelect
+        CategoryIcon={<BsHouse />}
+        type={postTypeFilter.type}
+        category={postTypeFilter.title}
+        options={postTypeFilter.options}
+      />
       <FilterSelect
         CategoryIcon={<FaRegSquare />}
         type={areaFilter.type}

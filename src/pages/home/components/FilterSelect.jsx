@@ -39,7 +39,9 @@ const FilterSelect = ({CategoryIcon, type, category, options=[]}) => {
                     <li 
                         className="py-1 text-center text-sm font-semibold cursor-pointer hover:text-white"
                         key={i}
-                        onClick={() => onSelect({minValue: op.minValue, maxValue: op.maxValue, selectedText: op.text}, op.text)}
+                        onClick={() => {
+                            onSelect({minValue: op.minValue, maxValue: op.maxValue, selectedText: op.text}, op.text)}
+                        }
                     >
                         {op.text}
                     </li>

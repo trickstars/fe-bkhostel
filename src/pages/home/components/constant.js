@@ -83,3 +83,29 @@ export const areaFilter = {
         },
     ]
 }
+
+
+export const postTypeFilter = {
+    type: "type",
+    title: "Loại tin đăng",
+    titleExpaned: "Chọn theo loại tin",
+    options: [
+        {
+            text: "Phòng trọ",
+            value: "1",
+        },
+        {
+            text: "Nhà cho thuê",
+            value: "2",
+        },
+        {
+            text: "Căn hộ cho thuê",
+            value: "3",
+        },
+        {
+            text: "Tìm người ở ghép",
+            value: "4",
+        },
+
+    ]
+}
