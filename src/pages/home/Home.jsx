@@ -33,7 +33,6 @@ const Home = memo(() => {
 
 
   
-  const POST_PER_PAGE = 4
   const TOTAL_PAGE = 5
   const [ page, setPage ] = useState(1)
   
@@ -66,7 +65,7 @@ const Home = memo(() => {
           }
           <RentalFilterList />
           <Pagination 
-            currentPage = {page} 
+            currentPage = {filterValue.page} 
             totalPage = {5}
             gotoPage = {gotoPage}
           />
