@@ -18,46 +18,18 @@ import { useQuery } from '@tanstack/react-query';
 import { usePostFilterContext } from '../../contexts/PostFilterContext';
 import { rentingTypes } from './constant';
 
-const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
-const authToken = localStorage.getItem('token')
-const config = {'Authorization': authToken};
-
 const Header = memo((props) => {
-  const [profile, setProfile] = useState({
-    "username": "",
-    "password": "",
-    "role": "USER",
-    "status": "ACTIVE",
-    "email": "",
-    "full_name": "",
-    "phone": "",
-    "avatar": "",
-  });
   const { updateFilterValue, updateActiveTab } = usePostFilterContext();
   const { refetch } = useQuery({
     queryKey: ['posts'],
     enabled: false,
   });
-  
-  const getUser = async () => {
-    console.log("get User")
-    try {
-        const res = await axios.get(`${baseURL}/`, {headers: config}).then(res => setProfile(res.data));
-        console.log(res);
-    } catch (error) {
-        const customError = new Error();
-        customError.message = error.response.data.message;
-        console.log(customError.message);
-        throw customError;
-    }
 
-  };
   const navigate = useNavigate();
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
   const optionsRef = useRef(null);
 
   useEffect(() => {
-    
     let optionSelectionHandler = (e) => {
       if (!optionsRef.current?.contains(e.target)) {
         setIsDropdownOpened(false);
@@ -65,9 +37,6 @@ const Header = memo((props) => {
       }
     };
     document.addEventListener('mousedown', optionSelectionHandler);
-    // checkAuth();
-    // activeItem(props);
-    getUser();
     return () =>
       document.removeEventListener('mousedown', optionSelectionHandler);
   });
@@ -82,18 +51,11 @@ const Header = memo((props) => {
     navigate(route);
   };
   const rentingTypeHandler = (typeValue) => {
+    updateFilterValue({ key: 'type', value: typeValue });
     console.log(`rentingTypes = ${typeValue}`);
     navigate('/');
-    updateFilterValue({ key: 'type', value: typeValue });
     setTimeout(() => refetch(), 100);
   };
-  // const checkAuth = () => {
-  //   if (!isAuthenticated) navigate('/login');
-  //   // console.log('Auth token ne' + authToken);
-  // }
-  // useEffect(() => {
-    
-  // }, [])
 
   return (
     <nav className="container mx-auto px-20 py-4 border-b-2 border-b-gray-300">
@@ -107,7 +69,7 @@ const Header = memo((props) => {
         </span>
         <div className="flex flex-col items-start  justify-center md:items-center md:flex-row space-y-2 md:space-y-0 space-x-0 md:space-x-16">
           {/* Favorite  */}
-          <Link to={(isAuthenticated)?"/save-post" : "/login"}>
+          <Link to={isAuthenticated ? '/save-post' : '/login'}>
             <div className="flex items-center justify-center space-x-2">
               <HeartOutlined />
 
@@ -136,9 +98,10 @@ const Header = memo((props) => {
               >
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 mx-auto">
                   <Link to="/user/profile">
-                    <li 
-                    onClick={() => routingHandler("/user/profile", 3)}
-                    className="flex justify-start items-center space-x-1 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <li
+                      onClick={() => routingHandler('/user/profile', 3)}
+                      className="flex justify-start items-center space-x-1 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
                       <UserOutlined />
 
                       <p>Trang cá nhân</p>
@@ -164,12 +127,12 @@ const Header = memo((props) => {
                       <p>Trang yêu thích</p>
                     </li>
                   </Link>
-                  <Link to="/user/Recharge" state={{ profile, authToken }} >
+                  <Link to="/user/Recharge" state={{ profile, authToken }}>
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <DollarOutlined />
                       <p>Nạp tiền</p>
                     </li>
-                  </Link>  
+                  </Link>
                   <Link to="/user/HistoryMoney" state={{ profile, authToken }}>
                     <li className="flex justify-start items-center space-x-1 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <HistoryOutlined />
