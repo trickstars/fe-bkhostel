@@ -65,7 +65,7 @@ const Header = memo((props) => {
       }
     };
     document.addEventListener('mousedown', optionSelectionHandler);
-    checkAuth();
+    // checkAuth();
     // activeItem(props);
     getUser();
     return () =>
@@ -87,9 +87,10 @@ const Header = memo((props) => {
     updateFilterValue({ key: 'type', value: typeValue });
     setTimeout(() => refetch(), 100);
   };
-  const checkAuth = () => {
-    if (authToken === null) navigate('/login');
-  }
+  // const checkAuth = () => {
+  //   if (!isAuthenticated) navigate('/login');
+  //   // console.log('Auth token ne' + authToken);
+  // }
   // useEffect(() => {
     
   // }, [])
