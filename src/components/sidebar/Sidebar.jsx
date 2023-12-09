@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { usePostFilterContext } from '../../contexts/PostFilterContext';
 
+
 const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
-const authToken = localStorage.getItem('token')
-const config = { 'Authorization': authToken };
+
 
 const Sidebar = ({ }) => {
+  
+  const authToken = localStorage.getItem('token');
+  const config = { Authorization: authToken };
   const { activeTab } = usePostFilterContext();
   const [active, setActive] = useState(activeTab);
   const navigate = useNavigate();
@@ -47,7 +50,7 @@ const Sidebar = ({ }) => {
       const customError = new Error();
       customError.message = error.response.data.message;
       console.log(customError.message);
-      throw customError;
+      // throw customError;
     }
 
   };

@@ -25,8 +25,8 @@ const LeftSideBar = () => {
 
     } 
     const handleLogout = () => {
-        localStorage.clear();
-        navigate("../login")
+        // localStorage.clear();
+        // navigate("../login")
     }
 
     return (

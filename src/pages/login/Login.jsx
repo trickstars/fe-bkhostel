@@ -10,6 +10,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 
 const Login = memo((props) => {
+  localStorage.clear();
   const navigate = useNavigate();
   const user = {
     minUserNameLen: 6,
@@ -19,7 +20,7 @@ const Login = memo((props) => {
   const { mutate, isPending, isSuccess, isError, error, status } = useMutation({
     mutationFn: async (userData) => {
       const response = await loginUser(userData);
-      console.log(response);
+      console.log("response = ", response);
       localStorage.setItem('token', response.token);
       console.log(`role = ${response.result['user-info'].role}`);
       localStorage.setItem('role', response.result['user-info'].role);
