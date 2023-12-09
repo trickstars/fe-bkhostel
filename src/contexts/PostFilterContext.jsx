@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 const defaultFilterValue = {
-    page: null,
+    page: 1,
     set: false,
     type: null,
     price: {
@@ -24,7 +24,11 @@ export const PostFilterContextProvider = ({children}) => {
     const [filterValue, setFilterValue] = useState(defaultFilterValue)
     const [activeTab, setActiveTab] = useState(3);
     const updateFilterValue = ({key, value}) => {
-        setFilterValue(filter => ( {...filter, ...{[key]: value, set: true}}))
+        if(key !== "page") {
+            setFilterValue(filter => ( {...filter, ...{[key]: value, set: true}}))
+        } else { // navigate page dont't set any filter option
+            setFilterValue(filter => ( {...filter, ...{[key]: value}}))
+        }
     }
 
     const resetFilter = () => {
