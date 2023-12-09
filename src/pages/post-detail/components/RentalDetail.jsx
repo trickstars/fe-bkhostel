@@ -2,6 +2,7 @@ import React from 'react'
 import { CiLocationOn, CiClock1 } from "react-icons/ci";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { MdOutlineOtherHouses } from "react-icons/md";
+import { BiCategoryAlt } from "react-icons/bi";
 import MapLocation from './MapLocation';
 
 
@@ -11,6 +12,7 @@ const RentalDetail = ({
     full_address : address,
     price,
     area, 
+    type,
     postDate, 
     desc, 
     phone_num,
@@ -27,6 +29,10 @@ const RentalDetail = ({
             <div className='flex items-center gap-1'>
                 <CiLocationOn />
                 <p className='text-sm'>Địa chỉ: {`${address.district}, ${address.ward}, ${address.street_address}`}</p>
+            </div>
+            <div className='flex items-center gap-1'>
+                <BiCategoryAlt />
+                <p className='text-sm'>Loại tin: {type}</p>
             </div>
             <div className='flex items-center gap-4 mb-2'>
                 <div className='flex items-center gap-1'>
