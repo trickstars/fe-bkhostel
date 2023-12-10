@@ -13,7 +13,7 @@ const PaymentHistory = () => {
     const getPayments = async () => {
         console.log("get Payments")
         await axios.get(`${baseURL}`, {headers: config}).then(res => {
-            console.log(res);
+            console.log(res.data);
             setPayments(res.data);
         });
     };
@@ -38,7 +38,7 @@ const PaymentHistory = () => {
                         </thead>
                         <tbody>
                         {
-                            (payments.length > 0) ? payments.result.map((payment, idx) => {
+                            (payments.length > 0) ? payments.map((payment, idx) => {
                                 return (
                                     <tr className="grid grid-cols-16 font-bold rounded-[4px]" key={idx}>
                                         <td className=" border border-slate-300 col-span-4 p-1">{payment.createdAt}</td>
