@@ -23,11 +23,11 @@ const PostHistory = () => {
     return (
             <div className="col-start-3 col-span-8  gap-3 ">
                 <div className="flex flex-col row-start-1 row-span-7 col-start-3 col-span-6 ml-5 mb-10">
-                    <div className="px-3 py-4 mt-6 border-b border-gray rounded-md h-fit text-5xl">
+                    <div className="px-3 py-4 mt-6 border-b border-gray rounded-md h-fit font-bold text-3xl">
                         Lịch sử tin đăng
                     </div>
                     <table className="mt-4 text-center mr-10 table-auto border-collapse border border-slate-300">
-                        <thead className="grid grid-cols-16 font-bold rounded-[4px]">
+                        <thead className="grid grid-cols-16 font-bold text-lg rounded-[4px]">
                             <th className=" border border-slate-300 col-span-2 p-1">Tiêu đề</th>
                             <th className=" border border-slate-300 col-span-3 p-1">Ảnh đại diện</th>
                             <th className=" border border-slate-300 col-span-2 p-1">Diện tích</th>
@@ -36,7 +36,7 @@ const PostHistory = () => {
                             <th className=" border border-slate-300 col-span-2 p-1">Ngày bắt đầu</th>
                             <th className=" border border-slate-300 col-span-2 p-1">Trạng thái</th>
                         </thead>
-                        <tbody>
+                        <tbody className="text-sm">
                         {
                             posts.totalPosts ? posts.result.map((post, idx) => {
                                 return (

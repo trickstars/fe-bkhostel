@@ -119,15 +119,15 @@ const PostNew = () => {
     return (
             <div className="col-start-3 col-span-8 gap-3 max-w-[1536px] mx-auto">
                 <div className="flex flex-col row-start-1 row-span-7 col-start-3 col-span-6 ml-5">
-                    <div className="py-4 mt-6 border-b border-gray rounded-md h-fit text-5xl">
+                    <div className="py-4 mt-6 border-b border-gray rounded-md h-fit text-3xl font-bold">
                         Đăng tin mới
                     </div>
 
                     <form onSubmit={handleSubmit} className="my-10 mr-10">
                         <div className="my-8">
-                            <p className="[font-family:'Poppins-Medium',Helvetica] font-medium text-black text-4xl">Dịch vụ</p>
+                            <p className="[font-family:'Poppins-Medium',Helvetica] font-medium text-black text-2xl">Dịch vụ</p>
                             <div className="items-center mt-8">
-                                <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="service">Gói dịch vụ</label>
+                                <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="service">Gói dịch vụ</label>
                                 {/* <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="service" name="service"/> */}
                                 <select name="service" id="service" className='px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]'>
                                     {services.length ? services.map((item, idx)=> {
@@ -140,15 +140,15 @@ const PostNew = () => {
                         </div>
 
                         <div className="my-8">
-                            <p className="[font-family:'Poppins-Medium',Helvetica] font-medium text-black text-4xl">Địa chỉ cho thuê</p>
+                            <p className="[font-family:'Poppins-Medium',Helvetica] font-medium text-black text-2xl">Địa chỉ cho thuê</p>
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full mr-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="city">Tỉnh/ Thành phố</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="city">Tỉnh/ Thành phố</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] bg-[#dfdfdf] border border-solid border-[#cccccc]" type="text" defaultValue="Thành phố Hồ Chí Minh" disabled name="city" id="city"/>
                                 </div>
 
                                 <div className="items-center mt-8 w-full ml-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="district">Quận/ Huyện</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="district">Quận/ Huyện</label>
                                     {/* <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="service" name="service"/> */}
                                     <select  onChange={e => getWards(e.target.value)} name="district" id="district" className='px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]'>
                                         {district.length ? district.map((item, idx)=> {
@@ -162,7 +162,7 @@ const PostNew = () => {
 
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full mr-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="ward">Phường/ Xã</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="ward">Phường/ Xã</label>
                                     {/* <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="service" name="service"/> */}
                                     <select name="ward" id="ward" className='px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]'>
                                         {ward.length ? ward.map((item, idx)=> {
@@ -174,19 +174,19 @@ const PostNew = () => {
                                 </div>
 
                                 <div className="items-center mt-8 w-full mx-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="street">Đường/ Phố</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="street">Đường/ Phố</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="street" name="street"/>
                                 </div>
 
                                 <div className="items-center mt-8 w-full ml-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="number">Số nhà</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="number">Số nhà</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="number" name="number"/>
                                 </div>
                             </div>
 
                             {/* <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="full_address">Địa chỉ chính xác</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="full_address">Địa chỉ chính xác</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" disabled id="full_address" name="full_address"/>
                                 </div>
                             </div> */}
@@ -203,7 +203,7 @@ const PostNew = () => {
                                         </GoogleMapReact>
                                     </div>
                                 <div className="bg-[#E9DDBF] w-full h-72 ml-4 p-6">
-                                    <p className="text-[24px] mb-2">Lưu ý khi đăng tin</p>
+                                    <p className="text-lg mb-2">Lưu ý khi đăng tin</p>
                                     <p>
                                     * Nội dung phải viết bằng tiếng Việt có dấu.
                                     </p>
@@ -221,10 +221,10 @@ const PostNew = () => {
                         </div>
 
                         <div className="my-8">
-                            <p className="[font-family:'Poppins-Medium',Helvetica] font-medium text-black text-4xl">Thông tin mô tả</p>
+                            <p className="[font-family:'Poppins-Medium',Helvetica] font-medium text-black text-2xl">Thông tin mô tả</p>
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full mr-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="type">Loại hình</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="type">Loại hình</label>
                                     {/* <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="service" name="service"/> */}
                                     <select name="type" id="type" className='px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]'>
                                         <option value="1">Cho thuê phòng trọ</option>
@@ -237,14 +237,14 @@ const PostNew = () => {
 
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full mr-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="title">Tiêu đề</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="title">Tiêu đề</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="title" name="title"/>
                                 </div>
                             </div>
 
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="desc">Nội dung mô tả</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="desc">Nội dung mô tả</label>
                                     <textarea className="p-3 block w-full h-60 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="desc" name="desc"/>
                                 </div>
                             </div>
@@ -252,31 +252,31 @@ const PostNew = () => {
 
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full mr-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="customer_type">Đối tượng cho thuê</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="customer_type">Đối tượng cho thuê</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="customer_type" name="customer_type"/>
                                 </div>
 
                                 <div className="items-center mt-8 w-full ml-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="price">Giá cho thuê</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="price">Giá cho thuê</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="price" name="price"/>
                                 </div>
                             </div>
 
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full mr-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="phone_num">Điện thoại</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="phone_num">Điện thoại</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="phone_num" name="phone_num"/>
                                 </div>
 
                                 <div className="items-center mt-8 w-full ml-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="area">Diện tích</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="area">Diện tích</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="area" name="area"/>
                                 </div>
                             </div>
 
                             <div className="flex justify-between">
                                 {/* <div className="items-center mt-8 w-full mr-4">
-                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]" htmlFor="customer_type">Đối tượng cho thuê</label>
+                                    <label className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg" htmlFor="customer_type">Đối tượng cho thuê</label>
                                     <input className="px-3 block w-full h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue="" id="customer_type" name="customer_type"/>
                                 </div> */}
 
@@ -286,10 +286,10 @@ const PostNew = () => {
                         </div>
 
                         <div className="my-8">
-                            <p className="[font-family:'Poppins-Medium',Helvetica] font-medium text-black text-4xl">Hình ảnh</p>
+                            <p className="[font-family:'Poppins-Medium',Helvetica] font-medium text-black text-2xl">Hình ảnh</p>
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full mr-4">
-                                    <p className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]">Cập nhật hình ảnh cho nơi thuê</p>
+                                    <p className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg">Cập nhật hình ảnh cho nơi thuê</p>
                                     <div className="h-60 rounded-[4px] border border-dashed border-[#cccccc] justify-center items-center flex">
                                         <label href="" className="rounded-[4px] border border-solid border-[#cccccc] p-2 cursor-pointer" htmlFor="images">Thêm hình ảnh</label>
                                         <input className="rounded-[4px] border border-solid border-[#cccccc] p-2 hidden" id="images" encType="multipart/form-data" multiple  type="file" name="images" onChange={e => handleFileRead(e)} />
@@ -300,7 +300,7 @@ const PostNew = () => {
 
                             <div className="flex justify-between">
                                 <div className="items-center mt-8 w-full mr-4">
-                                    <p className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px]">Ảnh đã chọn</p>
+                                    <p className="mb-2 block w-full [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg">Ảnh đã chọn</p>
                                     <div className="images-container">
                                         {/* <img src="https://hcmut.edu.vn/img/nhanDienThuongHieu/01_logobachkhoatoi.png" alt="hinh anh" className="images w-48"/> */}
                                         {
@@ -318,7 +318,7 @@ const PostNew = () => {
                         </div>
 
                         <button type='submit' className='w-full justify-center items-center rounded-md px-3 py-3 mt-8 mb-16 bg-[#008000]'>
-                            <p className='text-sm text-white text-3xl font-semibold'>Tạo mới</p>
+                            <p className='text-sm text-white font-semibold'>Tạo mới</p>
                         </button>
 
                         <div id="alert-3" className={isSubmit? " border-4 border-green-300 flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400": "hidden"} role="alert">
