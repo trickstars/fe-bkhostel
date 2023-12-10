@@ -92,17 +92,17 @@ const EditProfile = (props) => {
     return (
 
             <div className="flex flex-col row-start-1 row-span-7 col-start-3 col-span-6 ml-5">
-                <div className="py-4 mt-6 border-b border-gray rounded-md h-fit text-5xl">
+                <div className="py-4 mt-6 border-b border-gray rounded-md h-fit text-3xl font-bold">
                     Chỉnh sửa thông tin cá nhân
                 </div>
                     <form id="form1" className="my-10 mr-10" onSubmit={handleSubmit}>
                             <div className="items-center flex justify-between mt-8">
-                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px] tracking-[0] leading-[normal]" htmlFor="email">Email</label>
+                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg tracking-[0] leading-[normal]" htmlFor="email">Email</label>
                                 <input className="px-3 inline-block float-right w-3/4 h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue={profile.email} id="email" name="email"/>
                             </div>
 
                             <div className="items-start flex justify-between mt-8">
-                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px] tracking-[0] leading-[normal]" htmlFor="phone">Số điện thoại</label>
+                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg tracking-[0] leading-[normal]" htmlFor="phone">Số điện thoại</label>
                                 <input className={phoneVisible?"px-3 inline-block float-right w-3/4 h-10 outline-none bg-[#F3F4FF] rounded-[4px] border border-solid border-[#cccccc]":"px-3 inline-block float-right w-3/4 h-10 outline-none bg-[#ffff] rounded-[4px] border border-solid border-[#cccccc]"} type="text" disabled={phoneVisible} defaultValue={profile.phone} id="phone" name="phone"/>
                             </div>
 
@@ -112,17 +112,17 @@ const EditProfile = (props) => {
                             </div>
 
                             <div className="items-start flex justify-between mt-8">
-                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px] tracking-[0] leading-[normal]" htmlFor="username">Tên hiển thị</label>
+                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg tracking-[0] leading-[normal]" htmlFor="username">Tên hiển thị</label>
                                 <input className="px-3 inline-block float-right w-3/4 h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue={profile.username} id="username" name="username"/>
                             </div>
 
                             <div className="items-start flex justify-between mt-8">
-                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px] tracking-[0] leading-[normal]" htmlFor="full_name">Họ và tên</label>
+                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg tracking-[0] leading-[normal]" htmlFor="full_name">Họ và tên</label>
                                 <input className="px-3 inline-block float-right w-3/4 h-10 outline-none rounded-[4px] border border-solid border-[#cccccc]" type="text" defaultValue={profile.full_name}  id="full_name" name="full_name"/>
                             </div>
 
                             <div className="items-start flex justify-between mt-8">
-                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px] tracking-[0] leading-[normal]" htmlFor="password">Mật khẩu </label>
+                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg tracking-[0] leading-[normal]" htmlFor="password">Mật khẩu </label>
                                 <input className="px-3 inline-block float-right w-3/4 h-10 outline-none bg-[#F3F4FF] rounded-[4px] border border-solid border-[#cccccc]" type="password" disabled defaultValue={profile.password} id="password" name="password"/>
                             </div>
 
@@ -132,7 +132,7 @@ const EditProfile = (props) => {
                             </div>
 
                             <div className="items-start flex justify-between mt-8">
-                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-[24px] tracking-[0] leading-[normal]" htmlFor="avatar">Ảnh đại diện</label>
+                                <label className="inline-block [font-family:'Poppins-Medium',Helvetica] font-medium text-black text-lg tracking-[0] leading-[normal]" htmlFor="avatar">Ảnh đại diện</label>
                                 <div className="inline-block float-right w-3/4 ">
                                     <img src={profile.avatar} alt="avatar" id="avatar-img" className="w-48"/>
                                 </div>
@@ -149,7 +149,7 @@ const EditProfile = (props) => {
                             </div>
 
                             <button type="submit" className='justify-center items-center w-full rounded-md px-3 py-3 mt-8 mb-16 bg-[#0000FF]'>
-                                <p className='text-sm text-white text-3xl font-semibold'>Cập nhật</p>
+                                <p className='text-sm text-white font-semibold'>Cập nhật</p>
                             </button>
 
 

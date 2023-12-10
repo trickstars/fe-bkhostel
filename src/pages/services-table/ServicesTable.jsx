@@ -34,7 +34,7 @@ const ServicesTable = () => {
     return (
     <div className="">
         <div className="max-w-[1536px] mx-auto m-10">
-            <p className="font-bold text-center text-4xl">Bảng giá dịch vụ</p>
+            <p className="font-bold text-center text-3xl">Bảng giá dịch vụ</p>
             <table className="table-auto border-collapse border border-slate-300 flex mt-10">
                 <thead className="grid font-bold rounded-[4px] bg-[#ffff] w-1/6">
                     <td className="grid grid-row-16 font-bold rounded-[4px]">
