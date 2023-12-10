@@ -11,6 +11,7 @@ export const path = {
     profile: '/profile',
     recharge: '/HistoryMoney',
     recharge_history: '/HistoryMoney/history',
+    payment_history: '/payment-history',
   },
   // admin: {},
 };

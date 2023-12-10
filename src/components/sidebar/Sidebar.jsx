@@ -29,6 +29,10 @@ const Sidebar = ({ }) => {
 
     navigate('user/HistoryMoney');
   };
+  const historyPayment = () => {
+
+    navigate('user/payment-history');
+  };
   const recharge = () => {
     navigate('user/Recharge');
   };
@@ -146,6 +150,18 @@ const Sidebar = ({ }) => {
             }
           >
             Lịch sử nạp tiền
+          </div>
+        </Link>
+
+        <Link to="/user/payment-history" onClick={() => updateActiveTab(6)}>
+          <div
+            className={
+              activeTab === 6
+                ? 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item bg-[#E7E6EC]'
+                : 'my-1 p-3 hover:cursor-pointer hover:bg-[#E7E6EC] item'
+            }
+          >
+            Lịch sử thanh toán
           </div>
         </Link>
 

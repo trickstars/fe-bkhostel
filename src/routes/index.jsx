@@ -29,6 +29,7 @@ import PostHistory from '../pages/post-history/PostHistory';
 import Profile from '../pages/profile/Profile';
 import PostNew from '../pages/post-new/PostNew';
 import ServicesTable from '../pages/services-table/ServicesTable';
+import PaymentHistory from '../pages/payment-history/PaymentHistory';
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,11 @@ const router = createBrowserRouter([
       {
         path: 'Recharge',
         element: <Recharge />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'payment-history',
+        element: <PaymentHistory />,
         errorElement: <ErrorPage />,
       },
     ],
@@ -185,7 +191,11 @@ const router = createBrowserRouter([
     element: <PostNew />,
     errorElement: <ErrorPage />,
   },
-
+  {
+    path: 'user/payment-history',
+    element: <PaymentHistory />,
+    errorElement: <ErrorPage />,
+  },
   {
     path: '/pricing',
     element: <PricingPage />,
