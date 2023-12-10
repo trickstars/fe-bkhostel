@@ -171,17 +171,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/post-history',
+    path: 'user/post-history',
     element: <PostHistory />,
     errorElement: <ErrorPage />,
   },
   {
-    path: '/profile',
+    path: 'user/profile',
     element: <Profile />,
     errorElement: <ErrorPage />,
   },
   {
-    path: '/post-new',
+    path: 'user/post-new',
     element: <PostNew />,
     errorElement: <ErrorPage />,
   },
