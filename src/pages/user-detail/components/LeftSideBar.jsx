@@ -58,7 +58,7 @@ const LeftSideBar = () => {
     };
     useEffect(() => {
         checkAuth();
-        // getUser();
+        getUser();
     }, [])
 
     const handleLogout = () => {
