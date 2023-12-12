@@ -11,11 +11,11 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import LeftSideBar from "../user-detail/components/LeftSideBar";
 import axios from "axios";
 
-const postURL = import.meta.env.VITE_BACKEND_API + "/admin/post";
-const authToken = localStorage.getItem("token");
-const config = { Authorization: authToken };
 
 const Posts = memo(() => {
+  const postURL = import.meta.env.VITE_BACKEND_API + "/admin/post";
+  const authToken = localStorage.getItem("token");
+  const config = { Authorization: authToken };
   const [renderedPost, setRenderedPost] = useState({});
   const [postsAdmin, setPostsAdmin] = useState({});
   const [pageNum, setPageNum] = useState(()=>{

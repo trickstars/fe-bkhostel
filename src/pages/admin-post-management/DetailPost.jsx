@@ -5,12 +5,12 @@ import Carousel from "../../components/admin/Carousel";
 import Gallery from "../../components/admin/Gallery";
 import LeftSideBar from "../user-detail/components/LeftSideBar";
 
-const postURL = import.meta.env.VITE_BACKEND_API + "/posts";
-const authToken = localStorage.getItem("token");
-const config = { Authorization: authToken };
 
 // eslint-disable-next-line react/display-name
 const DetailPost = memo(() => {
+  const postURL = import.meta.env.VITE_BACKEND_API + "/posts";
+  const authToken = localStorage.getItem("token");
+  const config = { Authorization: authToken };
   const [detailPost, setDetailPost] = useState({});
   const navigate = useNavigate();
   let { state } = useLocation();

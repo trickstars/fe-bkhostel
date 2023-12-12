@@ -9,15 +9,14 @@ import PriceSettingModal from "../../components/priceSettingModal/priceSettingMo
 import LeftSideBar from "../user-detail/components/LeftSideBar";
 import { useNavigate } from "react-router-dom";
 
-const paymentURL = import.meta.env.VITE_BACKEND_API + "/services";
-const authToken = localStorage.getItem("token");
-const config = { Authorization: authToken };
-const configOfUpdate = {
-  Authorization: authToken,
-  "Content-Type": "application/x-www-form-urlencoded",
-};
-
 const Pricing = memo(() => {
+  const paymentURL = import.meta.env.VITE_BACKEND_API + "/services";
+  const authToken = localStorage.getItem("token");
+  const config = { Authorization: authToken };
+  const configOfUpdate = {
+    Authorization: authToken,
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
   const navigate = useNavigate();
   const [payment, setPayment] = useState([]);
   const getPayment = async () => {

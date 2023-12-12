@@ -8,12 +8,14 @@ import UserDetail from "./UserDetail";
 import { RiArrowDropRightFill } from "react-icons/ri";
 import { RiArrowDownSFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import 'flowbite';
+import { RiLogoutBoxRLine } from "react-icons/ri";
 
+import 'flowbite';
+ 
 const style = {
     color: '#25BEB9', fontSize: '100%'
 }
-const style_list = "flex flex-row items-center pl-3 ml-2 hover:bg-[#B6D6F2] rounded-3xl";
+const style_list = "flex flex-row items-center pl-3 ml-2 hover:bg-[#B6D6F2] rounded-xl hover:cursor-pointer";
 
 const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
 const authToken = localStorage.getItem('token')
@@ -39,14 +41,11 @@ const LeftSideBar = () => {
     const navigateUserInfo = () => {
         navigate('/admin/userInfo', { state: { profile, authToken } });
     }
-    const navigateStatics = () => {
-        navigate('/admin/statistics');
-    }
+
     const checkAuth = () => {
         if (authToken === null) navigate('/login');
     };
     const getUser = async () => {
-        console.log("get User")
         try {
             await axios.get(`${baseURL}/`, { headers: config }).then(res => setProfile(res.data));
         } catch (error) {
@@ -59,14 +58,20 @@ const LeftSideBar = () => {
     };
     useEffect(() => {
         checkAuth();
-        getUser();
+        // getUser();
     }, [])
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate("../login")
+    }
+
     return (
         <div className=" h-screen col-start-1 col-span-2 pl-3 lg:text-lg md:text-md sm:text-sm bg-white">
             <div className="my-8 ml-4 mb-3 hover:cursor-pointer lg:text-4xl md:text-3xl font-semibold text-[#0891B2]">BKHOSTEL</div>
             <div className={style_list}>
                 <PiTelevision style={style} />
-                <div onClick={navigateStatics} className="my-8 hover:cursor-pointer ml-2">Statistics</div>
+                <div onClick={()=>{navigate("../admin/statistics")}} className="my-8 hover:cursor-pointer ml-2">Statistics</div>
             </div>
             <div className={style_list}>
                 <RxAvatar style={style} />
@@ -76,13 +81,17 @@ const LeftSideBar = () => {
                     : <RiArrowDropRightFill onClick={handleClick} style={{ marginLeft: '100px', fontSize: '30px' }} />}
             </div>
             {show == true ? <UserDetail profile={profile} token={authToken} /> : <></>}
-            <div className={style_list}>
+            <div className={style_list} onClick={()=>{navigate("../admin/posts")}}>
                 <CiCreditCard2 style={style} />
-                <div className="my-8 hover:cursor-pointer ml-2">Post</div>
+                <div className="my-4 ml-2">Post</div>
             </div>
-            <div className={style_list}>
+            <div className={style_list} onClick={()=>{navigate("../admin/pricing")}}>
                 <IoCartOutline style={style} />
-                <div className="my-8 hover:cursor-pointer ml-2">Pricing</div>
+                <div className="my-4 ml-2">Pricing</div>
+            </div>
+            <div className={style_list} onClick={handleLogout}>
+                <RiLogoutBoxRLine style={style}/>
+                <div className="my-4 ml-2">Logout</div>
             </div>
         </div>
     )
