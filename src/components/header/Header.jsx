@@ -19,35 +19,13 @@ import { usePostFilterContext } from '../../contexts/PostFilterContext';
 import { rentingTypes } from './constant';
 
 const Header = memo((props) => {
-  // const [profile, setProfile] = useState({
-  //   "username": "",
-  //   "password": "",
-  //   "role": "USER",
-  //   "status": "ACTIVE",
-  //   "email": "",
-  //   "full_name": "",
-  //   "phone": "",
-  //   "avatar": "",
-  // });
+
   const { updateFilterValue, updateActiveTab } = usePostFilterContext();
   const { refetch } = useQuery({
     queryKey: ['posts'],
     enabled: false,
   });
 
-  // const getUser = async () => {
-  //   console.log("get User")
-  //   try {
-  //       const res = await axios.get(`${baseURL}/`, {headers: config}).then(res => setProfile(res.data));
-  //       console.log(res);
-  //   } catch (error) {
-  //       const customError = new Error();
-  //       customError.message = error.response.data.message;
-  //       console.log(customError.message);
-  //       throw customError;
-  //   }
-
-  // };
   const navigate = useNavigate();
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
   const optionsRef = useRef(null);
@@ -60,9 +38,6 @@ const Header = memo((props) => {
       }
     };
     document.addEventListener('mousedown', optionSelectionHandler);
-    // checkAuth();
-    // activeItem(props);
-    // getUser();
     return () =>
       document.removeEventListener('mousedown', optionSelectionHandler);
   });
@@ -82,13 +57,6 @@ const Header = memo((props) => {
     navigate('/');
     setTimeout(() => refetch(), 100);
   };
-  // const checkAuth = () => {
-  //   if (!isAuthenticated) navigate('/login');
-  //   // console.log('Auth token ne' + authToken);
-  // }
-  // useEffect(() => {
-
-  // }, [])
 
   return (
     <nav className="container mx-auto px-20 py-4 border-b-2 border-b-gray-300">
@@ -249,23 +217,7 @@ const Header = memo((props) => {
             <HoverDivider />
           </div>
         ))}
-        {/* <div className="group hover:cursor-pointer">
-          <span>Cho thuê phòng trọ</span>
-          <HoverDivider />
-        </div>
 
-        <div className="group hover:cursor-pointer">
-          <span>Nhà cho thuê</span>
-          <HoverDivider />
-        </div>
-        <div className="group hover:cursor-pointer">
-          <span>Căn hộ cho thuê</span>
-          <HoverDivider />
-        </div>
-        <div className="group hover:cursor-pointer">
-          <span>Tìm người ở ghép</span>
-          <HoverDivider />
-        </div> */}
         <div className="group hover:cursor-pointer">
           <span>Tin tức</span>
           <HoverDivider />

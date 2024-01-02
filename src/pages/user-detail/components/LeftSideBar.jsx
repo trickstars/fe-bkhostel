@@ -19,6 +19,7 @@ const style_list = "flex flex-row items-center pl-3 ml-2 hover:bg-[#B6D6F2] roun
 
 const baseURL = import.meta.env.VITE_BACKEND_API + '/users';
 const authToken = localStorage.getItem('token')
+console.log('Auth token ne may:', authToken)
 const config = { 'Authorization': authToken };
 
 const LeftSideBar = () => {

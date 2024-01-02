@@ -10,7 +10,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 
 const Login = memo((props) => {
-  localStorage.clear();
+  // localStorage.clear();
   const navigate = useNavigate();
   const user = {
     minUserNameLen: 6,

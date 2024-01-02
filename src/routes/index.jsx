@@ -125,19 +125,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/history-money',
-    element: <UserLayout />,
-    errorElement: <ErrorPage />,
-    children: [{ index: true, element: <HistoryMoney /> }],
-  },
-  ,
-  {
-    path: '/recharge',
-    element: <UserLayout />,
-    errorElement: <ErrorPage />,
-    children: [{ index: true, element: <Recharge /> }],
-  },
-  {
     path: 'admin/userlist',
     element: <UserList />,
   },
@@ -174,26 +161,6 @@ const router = createBrowserRouter([
   {
     path: 'admin/posts/detail',
     element: <DetailPost />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: 'user/post-history',
-    element: <PostHistory />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: 'user/profile',
-    element: <Profile />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: 'user/post-new',
-    element: <PostNew />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: 'user/payment-history',
-    element: <PaymentHistory />,
     errorElement: <ErrorPage />,
   },
   {
